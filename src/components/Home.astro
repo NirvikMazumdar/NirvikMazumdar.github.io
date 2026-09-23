@@ -41,6 +41,7 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
   .focus > div:hover { background: var(--accent-tint); transform: none; box-shadow: none; }
   .focus > div:hover::after { opacity: 1; transform: none; }
   .focus .mono { color: var(--accent); }
+  .stack-label { color: var(--text); font-size: .8125rem; font-weight: 700; }
   .more { gap: var(--sp-4); }
   .more__panel { padding-top: 0; background: transparent; border: 0; border-radius: 0; box-shadow: none; }
   .more__panel:hover { transform: none; box-shadow: none; border-color: var(--border-strong); }

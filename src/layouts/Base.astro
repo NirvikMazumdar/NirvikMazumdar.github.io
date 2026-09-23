@@ -73,6 +73,70 @@ const pageTitle = title ? `${title} · ${profile.name}` : `${profile.name} — $
         const target = document.getElementById(a.hash.slice(1));
         if (target) sectionObserver.observe(target);
       });
+
+      // The three profile panels are compact route cards: sensing and learning
+      // point to projects, while deployment points to relevant work experience.
+      document.querySelectorAll<HTMLElement>('.focus > div').forEach((panel, index, panels) => {
+        const targetId = index === panels.length - 1 ? 'experience' : 'projects';
+        panel.setAttribute('role', 'link');
+        panel.tabIndex = 0;
+        panel.setAttribute('aria-label', `View ${targetId}`);
+        const openTarget = () => document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' });
+        panel.addEventListener('click', openTarget);
+        panel.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            openTarget();
+          }
+        });
+      });
+
+      // Display official institutional marks next to the two education entries.
+      const institutionLogos: Record<string, string> = {
+        'RWTH Aachen University': 'https://www.rwth-aachen.de/global/show_picture.asp?id=aaaaaaaaaaagazb',
+        'Institute of Engineering & Management (IEM)': '/iem-logo.jpg',
+      };
+      document.querySelectorAll<HTMLElement>('.entry__head .muted').forEach((school) => {
+        const logoUrl = institutionLogos[school.textContent?.trim() || ''];
+        if (!logoUrl) return;
+        const logo = document.createElement('img');
+        logo.className = 'entry__logo';
+        logo.src = logoUrl;
+        logo.alt = `${school.textContent?.trim()} logo`;
+        logo.loading = 'lazy';
+        school.parentElement?.insertBefore(logo, school);
+      });
+
+      const featuredSkills = new Set(['Python', 'C++', 'ROS', 'Fastify / Node.js', 'PostgreSQL', 'ThingsBoard', 'MQTT', 'Thread', 'Grafana', 'Docker']);
+      document.querySelectorAll<HTMLElement>('.tag').forEach((tag) => {
+        if (featuredSkills.has(tag.textContent?.trim() || '')) tag.classList.add('tag--featured');
+      });
+
+      const keyTerms = /(Robotic Systems Engineering|machine learning|embedded systems|IoT|control engineering|real-time firmware|sensor integration|radar systems|digital twins|backend|data architectures|ThingsBoard|MQTT|Thread|REST APIs|60 GHz FMCW radar)/gi;
+      document.querySelectorAll<HTMLElement>('.lead').forEach((lead) => {
+        const walker = document.createTreeWalker(lead, NodeFilter.SHOW_TEXT);
+        const textNodes: Text[] = [];
+        while (walker.nextNode()) textNodes.push(walker.currentNode as Text);
+        textNodes.forEach((node) => {
+          const value = node.nodeValue || '';
+          if (!keyTerms.test(value)) return;
+          keyTerms.lastIndex = 0;
+          const fragment = document.createDocumentFragment();
+          value.split(keyTerms).forEach((part) => {
+            if (!part) return;
+            if (keyTerms.test(part)) {
+              const emphasis = document.createElement('strong');
+              emphasis.className = 'lead__key';
+              emphasis.textContent = part;
+              fragment.append(emphasis);
+              keyTerms.lastIndex = 0;
+            } else {
+              fragment.append(document.createTextNode(part));
+            }
+          });
+          node.replaceWith(fragment);
+        });
+      });
     </script>
   </body>
 </html>

@@ -105,7 +105,15 @@ Object.assign(profile, {
     ...profile.experience[0], period: 'May 2026 – present', location: 'Frankfurt, Germany · Hybrid',
     bullets: ['Reworking and extending the backend of EnvioTerminal, the company’s central smart-infrastructure platform, including its API, data and system architecture.', 'Developing EnvioChat, an AI-powered assistant for intelligent interaction with platform, device and sensor data.', 'Integrating IoT devices, sensor nodes and border routers through ThingsBoard, MQTT and Thread, with real-time communication between backend and edge devices.', 'Designing data-ingestion pipelines, REST APIs and interfaces for internal sensor data and external data integration.', 'Working with 60 GHz FMCW radar sensor technology, telemetry and signal data; supporting the analysis, debugging and integration of radar and presence-detection systems.', 'Developing and operating containerised applications with Docker, PostgreSQL, Grafana and Linux, including deployment, monitoring and troubleshooting of distributed backend and IoT systems.'],
     tools: ['Python', 'Fastify / Node.js', 'ThingsBoard', 'MQTT', 'Thread', 'Docker', 'PostgreSQL', 'Grafana', 'Linux / SSH'],
+  }, {
+    role: 'Computer Vision Engineer (Member)',
+    org: 'Frankfurt Robotics Science Team (FRoST) · Freelance',
+    period: 'Jun 2026 – present',
+    location: 'Frankfurt, Germany',
+    bullets: ['Contributing to practical robotics and computer-vision tasks with the Frankfurt Robotics Science Team.', 'Supporting Python-based prototyping, testing and experimentation for robotics applications.', 'Working with machine-learning, perception and robotic-system-integration concepts.', 'Collaborating on technical problem-solving and robotics project ideas.'],
+    tools: ['Computer Vision', 'Machine Learning', 'Python', 'Robotics'],
   }, profile.experience[1]],
+  achievements: [...profile.achievements, 'IEEE Student Chapter — Content Writer (2019–2020): technical communication and student engineering activities.', 'ASME IEM Student Chapter — Member (2018–2019): student-led technical and interdisciplinary engineering activities.'],
   skills: [
     { group: 'Programming', items: ['Python', 'C++', 'C', 'SQL'] },
     { group: 'Machine Learning & AI', items: ['Scikit-learn', 'TensorFlow', 'PyTorch', 'Hugging Face Transformers', 'LLMs / LLMOps (basics)', 'Agentic AI systems (basics)'] },
@@ -119,6 +127,35 @@ Object.assign(profile, {
     { group: 'Robotics', items: ['ROS', 'Sensor integration', 'Embedded / IoT systems', 'Digital twins'] },
     { group: 'Web & Deployment', items: ['React', 'Vite', 'Docker-based deployments', 'Flask (basic)', 'AWS (basic)'] },
     { group: 'Concepts', items: ['Vehicle-to-Grid (V2G)', 'Edge / IoT architectures', 'Real-time sensor communication'] },
+  ],
+});
+
+// Education details aligned with the current academic program and CV.
+Object.assign(profile, {
+  education: [
+    {
+      ...profile.education[0],
+      period: 'Sep 2023 - Sep 2027',
+      logo: '/rwth-aachen-logo.png',
+      notes: [
+        'Robosys',
+        "Master's program focused on robotics, machine learning, control systems, perception and intelligent autonomous systems.",
+        'Key areas include Reinforcement Learning, learning-based control, computer vision, sensor integration, embedded systems and robotics software. Complementing academic work with practical experience in AI, IoT, radar sensing, real-time systems and backend integration through research and industry projects.',
+      ],
+    },
+    {
+      ...profile.education[1],
+      degree: 'Bachelor of Technology, Electrical and Electronics Engineering',
+      school: 'Institute of Engineering & Management (IEM)',
+      period: 'Mar 2018 - Sep 2022',
+      logo: '/iem-logo.jpg',
+      notes: [
+        'Grade: 8.72/10',
+        "Bachelor's degree in Electrical and Electronics Engineering, covering electrical machines, power systems, electronics, control systems, programming and embedded systems.",
+        'Built a strong engineering foundation in electrical systems, automation, control and programming, which later supported my specialization in robotics, machine learning and intelligent systems.',
+        'Thesis: Comparative performance analysis of a Bayesian-regularisation-based artificial neural network and the conventional P&O algorithm in the MPPT controller of a solar PV system.',
+      ],
+    },
   ],
 });
 
@@ -294,6 +331,33 @@ const localizedCvUpdate = {
   nl: { role: 'Developer Machine Learning & Slimme Infrastructuur', period: 'mei 2026 – heden', location: 'Frankfurt, Duitsland · Hybride', bullets: ['Grondige herwerking en uitbreiding van de backend van EnvioTerminal, inclusief API-, data- en systeemarchitectuur.', 'Ontwikkeling van EnvioChat, een AI-gestuurde assistent voor intelligente interactie met platform-, apparaat- en sensordata.', 'Integratie van IoT-apparaten, sensorknopen en border routers via ThingsBoard, MQTT en Thread, met realtime communicatie tussen backend en edge-apparaten.', 'Ontwerp van data-ingestiepijplijnen, REST API’s en interfaces voor interne sensordata en externe dataintegratie.', 'Werken met 60-GHz-FMCW-radarsensoren en telemetrie- en signaaldata; ondersteuning bij analyse, debugging en integratie van radar- en aanwezigheidsdetectiesystemen.', 'Ontwikkeling en beheer van gecontaineriseerde toepassingen met Docker, PostgreSQL, Grafana en Linux, inclusief deployment, monitoring en probleemoplossing.'] },
 } as const;
 
+const localizedFrost = {
+  de: { role: 'Computer-Vision-Ingenieur (Mitglied)', period: 'Juni 2026 - heute', location: 'Frankfurt, Deutschland', bullets: ['Mitarbeit an praxisnahen Robotik- und Computer-Vision-Aufgaben im Frankfurt Robotics Science Team.', 'Unterst\u00fctzung von Python-basiertem Prototyping, Tests und Experimenten f\u00fcr Robotikanwendungen.', 'Arbeit mit Konzepten aus Machine Learning, Perzeption und Robotiksystemintegration.', 'Zusammenarbeit an technischen Probleml\u00f6sungen und Robotik-Projektideen.'] },
+  fr: { role: 'Ing\u00e9nieur vision par ordinateur (membre)', period: 'juin 2026 - aujourd\u2019hui', location: 'Francfort, Allemagne', bullets: ['Contribution \u00e0 des t\u00e2ches pratiques de robotique et de vision par ordinateur au sein de Frankfurt Robotics Science Team.', 'Soutien au prototypage, aux tests et \u00e0 l\u2019exp\u00e9rimentation en Python pour des applications robotiques.', 'Travail sur des concepts d\u2019apprentissage automatique, de perception et d\u2019int\u00e9gration de syst\u00e8mes robotiques.', 'Collaboration \u00e0 la r\u00e9solution de probl\u00e8mes techniques et \u00e0 des id\u00e9es de projets robotiques.'] },
+  nl: { role: 'Computer Vision Engineer (lid)', period: 'juni 2026 - heden', location: 'Frankfurt, Duitsland', bullets: ['Bijdrage aan praktische robotica- en computer-visiontaken binnen Frankfurt Robotics Science Team.', 'Ondersteuning van Python-gebaseerd prototypen, testen en experimenteren voor robotica-toepassingen.', 'Werken met concepten rond machine learning, perceptie en roboticasysteemintegratie.', 'Samenwerking aan technische probleemoplossing en robotica-projectidee\u00ebn.'] },
+} as const;
+
+const localizedEducationUpdate = {
+  de: [
+    { degree: 'M.Sc. Robotiksystemtechnik', period: 'Sep. 2023 - Sep. 2027', notes: ['Robosys', 'Masterstudiengang mit Schwerpunkt Robotik, Machine Learning, Regelungstechnik, Perzeption und intelligenten autonomen Systemen.', 'Kernbereiche: Reinforcement Learning, lernbasierte Regelung, Computer Vision, Sensorintegration, Embedded Systems und Robotiksoftware; erg\u00e4nzt durch Praxis in KI, IoT, Radarsensorik, Echtzeitsystemen und Backend-Integration.'] },
+    { degree: 'Bachelor of Technology, Electrical and Electronics Engineering', period: 'M\u00e4rz 2018 - Sep. 2022', notes: ['Note: 8,72/10', 'Bachelorstudium der Electrical and Electronics Engineering mit Grundlagen in elektrischen Maschinen, Energiesystemen, Elektronik, Regelungstechnik, Programmierung und Embedded Systems.', 'Fundierte Basis in elektrischen Systemen, Automatisierung, Regelung und Programmierung als Grundlage f\u00fcr die Spezialisierung auf Robotik, Machine Learning und intelligente Systeme.', 'Abschlussarbeit: Vergleichende Leistungsanalyse eines neuronalen Netzes mit Bayes-Regularisierung und des konventionellen P&O-Algorithmus in einem MPPT-Regler f\u00fcr PV-Systeme.'] },
+  ],
+  fr: [
+    { degree: 'M.Sc. Syst\u00e8mes robotiques', period: 'sept. 2023 - sept. 2027', notes: ['Robosys', 'Master ax\u00e9 sur la robotique, l\u2019apprentissage automatique, les syst\u00e8mes de commande, la perception et les syst\u00e8mes autonomes intelligents.', 'Domaines cl\u00e9s : apprentissage par renforcement, commande fond\u00e9e sur l\u2019apprentissage, vision par ordinateur, int\u00e9gration de capteurs, syst\u00e8mes embarqu\u00e9s et logiciels robotiques; compl\u00e9t\u00e9s par une exp\u00e9rience pratique en IA, IoT, radar, temps r\u00e9el et int\u00e9gration backend.'] },
+    { degree: 'Bachelor of Technology, Electrical and Electronics Engineering', period: 'mars 2018 - sept. 2022', notes: ['Note : 8,72/10', 'Licence en g\u00e9nie \u00e9lectrique et \u00e9lectronique couvrant les machines \u00e9lectriques, syst\u00e8mes \u00e9nerg\u00e9tiques, \u00e9lectronique, commande, programmation et syst\u00e8mes embarqu\u00e9s.', 'Base solide en syst\u00e8mes \u00e9lectriques, automatisation, commande et programmation, ayant soutenu la sp\u00e9cialisation ult\u00e9rieure en robotique, apprentissage automatique et syst\u00e8mes intelligents.', 'M\u00e9moire : analyse comparative des performances d\u2019un r\u00e9seau neuronal \u00e0 r\u00e9gularisation bay\u00e9sienne et de l\u2019algorithme P&O conventionnel dans un contr\u00f4leur MPPT photovolta\u00efque.'] },
+  ],
+  nl: [
+    { degree: 'M.Sc. Robotische Systeemtechniek', period: 'sep. 2023 - sep. 2027', notes: ['Robosys', 'Masteropleiding gericht op robotica, machine learning, regeltechniek, perceptie en intelligente autonome systemen.', 'Kerngebieden zijn reinforcement learning, lerende regeltechniek, computer vision, sensorintegratie, embedded systemen en roboticasoftware, aangevuld met praktijkervaring in AI, IoT, radarsensoren, realtime systemen en backendintegratie.'] },
+    { degree: 'Bachelor of Technology, Electrical and Electronics Engineering', period: 'mrt. 2018 - sep. 2022', notes: ['Cijfer: 8,72/10', 'Bacheloropleiding Electrical and Electronics Engineering met elektrische machines, energiesystemen, elektronica, regeltechniek, programmeren en embedded systemen.', 'Een sterke basis in elektrische systemen, automatisering, regeltechniek en programmeren, die de latere specialisatie in robotica, machine learning en intelligente systemen ondersteunde.', 'Scriptie: vergelijkende prestatieanalyse van een neuraal netwerk met Bayesiaanse regularisatie en het conventionele P&O-algoritme in een MPPT-regelaar voor zonnepanelen.'] },
+  ],
+} as const;
+
+const localizedVolunteering = {
+  de: ['IEEE Student Chapter - Content Writer (2019-2020): technische Kommunikation und studentische Ingenieuraktivit\u00e4ten.', 'ASME IEM Student Chapter - Mitglied (2018-2019): studentische technische und interdisziplin\u00e4re Ingenieuraktivit\u00e4ten.'],
+  fr: ['IEEE Student Chapter - R\u00e9dacteur de contenu (2019-2020) : communication technique et activit\u00e9s d\u2019ing\u00e9nierie \u00e9tudiantes.', 'ASME IEM Student Chapter - Membre (2018-2019) : activit\u00e9s techniques et interdisciplinaires men\u00e9es par des \u00e9tudiants.'],
+  nl: ['IEEE Student Chapter - Content Writer (2019-2020): technische communicatie en technische studentenactiviteiten.', 'ASME IEM Student Chapter - Lid (2018-2019): technische en interdisciplinaire studentenactiviteiten.'],
+} as const;
+
 const localizedSkillGroups = {
   de: ['Programmierung', 'Machine Learning & KI', 'Deep Learning & Computer Vision', 'Backend & APIs', 'IoT & Datenplattformen', 'Embedded Systems & Firmware', 'Radar & Sensorik', 'Kommunikation & Protokolle', 'DevOps & Tools', 'Robotik', 'Web & Deployment', 'Weitere Konzepte'],
   fr: ['Programmation', 'Machine Learning & IA', 'Deep Learning & Vision par ordinateur', 'Backend & API', 'IoT & plateformes de données', 'Systèmes embarqués & firmware', 'Radar & capteurs', 'Communication & protocoles', 'DevOps & outils', 'Robotique', 'Web & déploiement', 'Concepts complémentaires'],
@@ -305,11 +369,14 @@ export function getProfile(locale: Locale) {
   const translation = localizedProfiles[locale];
   return {
     ...profile,
-    experience: profile.experience.map((job, index) => ({ ...job, ...translation.experience[index], ...(index === 0 ? localizedCvUpdate[locale] : {}) })),
-    education: profile.education.map((education, index) => ({ ...education, ...translation.education[index] })),
+    experience: profile.experience.map((job, index) => ({
+      ...job,
+      ...(index === 0 ? localizedCvUpdate[locale] : index === 1 ? localizedFrost[locale] : translation.experience[index - 1]),
+    })),
+    education: profile.education.map((education, index) => ({ ...education, ...localizedEducationUpdate[locale][index] })),
     skills: profile.skills.map((skill, index) => ({ ...skill, group: localizedSkillGroups[locale][index] })),
     languages: translation.languages,
-    achievements: translation.achievements,
+    achievements: [...translation.achievements, ...localizedVolunteering[locale]],
     interests: translation.interests,
   };
 }

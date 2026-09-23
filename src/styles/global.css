@@ -101,6 +101,7 @@ html {
 
 body {
   margin: 0;
+  cursor: default;
   font-family: var(--font-sans);
   font-size: 1rem;
   line-height: 1.5;
@@ -114,6 +115,12 @@ body {
   background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+
+/* Panels with a destination use the hand cursor; passive copy stays an arrow,
+   avoiding an accidental text-selection I-beam. */
+.focus > div {
+  cursor: pointer;
 }
 
 h1, h2, h3, h4 {
@@ -266,6 +273,32 @@ summary,
 .tag:hover {
   border-color: var(--accent);
   color: var(--accent);
+}
+.tag--featured {
+  color: var(--accent);
+  background: var(--accent-tint);
+  border-color: var(--accent);
+  font-weight: 700;
+}
+.lead__key {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.entry__head > div:has(.entry__logo) {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: var(--sp-2);
+  align-items: center;
+}
+.entry__logo {
+  grid-row: span 2;
+  width: 2.75rem;
+  height: 2.75rem;
+  object-fit: contain;
+  padding: 0.25rem;
+  background: #fff;
+  border: 1px solid var(--border);
 }
 
 /* Calm Carbon headline: the accent is reserved for controls and wayfinding. */
