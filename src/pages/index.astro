@@ -26,7 +26,7 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
             Download CV <span aria-hidden="true">↓</span>
           </a>
           {profile.links.map((l) => (
-            <a class="btn btn--ghost" href={l.href} target="_blank" rel="noopener">
+            <a class="btn btn--terminal" href={l.href} target="_blank" rel="noopener">
               {l.label} <span aria-hidden="true">↗</span>
             </a>
           ))}
