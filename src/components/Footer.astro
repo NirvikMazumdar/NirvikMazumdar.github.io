@@ -14,6 +14,12 @@ const year = new Date().getFullYear();
     </g>
     <path class="robot-arm__base" d="M18 195h48l-8-19H26z" />
   </svg>
+  <svg class="footer__circuit" viewBox="0 0 1200 360" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 86h150v44h168v-62h226v80h182v-42h198v56h276" />
+    <path d="M0 278h115v-54h210v34h156v-76h244v58h166v-44h309" />
+    <path class="footer__circuit-pulse" d="M0 86h150v44h168v-62h226v80h182v-42h198v56h276" />
+    <circle cx="150" cy="86" r="5" /><circle cx="318" cy="130" r="5" /><circle cx="544" cy="68" r="5" /><circle cx="726" cy="148" r="5" /><circle cx="115" cy="278" r="5" /><circle cx="481" cy="182" r="5" /><circle cx="891" cy="240" r="5" />
+  </svg>
   <div class="footer__data-flow" aria-hidden="true"><span></span><span></span><span></span></div>
   <div class="container footer__inner">
     <div>
@@ -86,6 +92,25 @@ const year = new Date().getFullYear();
   .robot-arm__upper { transform-box: fill-box; transform-origin: 18% 82%; animation: robot-arm-sweep 9s ease-in-out infinite alternate; }
   .robot-arm__forearm { transform-box: fill-box; transform-origin: 18% 18%; animation: robot-arm-reach 6s ease-in-out infinite alternate; }
   .robot-arm__base { fill: rgba(15, 98, 254, 0.34); stroke-width: 3; }
+  .footer__circuit {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: rgba(161, 214, 255, 0.22);
+    stroke-width: 1.25;
+    pointer-events: none;
+    opacity: 0.68;
+  }
+  .footer__circuit circle { fill: rgba(161, 214, 255, 0.6); stroke: none; animation: footer-node-pulse 4s ease-in-out infinite alternate; }
+  .footer__circuit circle:nth-of-type(2n) { animation-delay: -2s; }
+  .footer__circuit-pulse {
+    stroke: rgba(66, 190, 255, 0.88);
+    stroke-dasharray: 10 520;
+    animation: footer-circuit-travel 8s linear infinite;
+  }
   .footer__data-flow {
     position: absolute;
     z-index: 0;
@@ -113,6 +138,8 @@ const year = new Date().getFullYear();
   @keyframes robot-arm-reach { from { transform: rotate(-9deg); } to { transform: rotate(10deg); } }
   @keyframes footer-factory-pulse { from { opacity: 0.32; transform: scale(.94); } to { opacity: 0.9; transform: scale(1.08); } }
   @keyframes footer-data-flow { 0% { transform: translateX(-1rem); opacity: 0; } 15%, 70% { opacity: 1; } 100% { transform: translateX(14rem); opacity: 0; } }
+  @keyframes footer-circuit-travel { to { stroke-dashoffset: -530; } }
+  @keyframes footer-node-pulse { from { opacity: 0.2; } to { opacity: 0.9; filter: drop-shadow(0 0 0.4rem #42beff); } }
   @keyframes footer-factory-pan { from { background-position: center, 44% 58%; } to { background-position: center, 56% 58%; } }
   @keyframes footer-factory-scan { 0%, 35% { transform: translateX(-100%); } 55%, 100% { transform: translateX(100%); } }
   .footer__inner,
@@ -179,6 +206,6 @@ const year = new Date().getFullYear();
       padding-top: 0;
     }
   }
-  @media (max-width: 640px) { .footer__robot-arm { opacity: 0.22; } .footer__data-flow { right: 1rem; bottom: 14%; } }
-  @media (prefers-reduced-motion: reduce) { .footer__factory, .footer__factory::before, .footer__factory::after, .robot-arm__upper, .robot-arm__forearm, .footer__data-flow span { animation: none; } }
+  @media (max-width: 640px) { .footer__robot-arm { opacity: 0.22; } .footer__circuit { opacity: 0.36; } .footer__data-flow { right: 1rem; bottom: 14%; } }
+  @media (prefers-reduced-motion: reduce) { .footer__factory, .footer__factory::before, .footer__factory::after, .robot-arm__upper, .robot-arm__forearm, .footer__data-flow span, .footer__circuit-pulse, .footer__circuit circle { animation: none; } }
 </style>

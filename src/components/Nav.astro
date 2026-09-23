@@ -55,12 +55,30 @@ const nav = [
     top: 0;
     z-index: 10;
     height: var(--nav-h);
+    isolation: isolate;
+    overflow: hidden;
     background: var(--nav-bg);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
     backdrop-filter: saturate(180%) blur(20px);
     border-bottom: 1px solid var(--border);
   }
+  .nav::before {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    top: -4rem;
+    left: -14rem;
+    width: 22rem;
+    height: 10rem;
+    background: radial-gradient(ellipse, rgba(15, 98, 254, 0.12), transparent 68%);
+    filter: blur(0.5rem);
+    animation: nav-hue-drift 22s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+  @keyframes nav-hue-drift { from { transform: translateX(0); opacity: 0.32; } to { transform: translateX(calc(100vw + 14rem)); opacity: 0.72; } }
   .nav__inner {
+    position: relative;
+    z-index: 1;
     display: flex;
     align-items: center;
     height: 100%;
@@ -185,4 +203,5 @@ const nav = [
       margin-left: 0;
     }
   }
+  @media (prefers-reduced-motion: reduce) { .nav::before { animation: none; opacity: 0.35; } }
 </style>
