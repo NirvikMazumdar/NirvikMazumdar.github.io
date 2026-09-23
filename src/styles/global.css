@@ -83,6 +83,18 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+/* Wide desktops need more than the browser's default 16px scale. Keep phones
+   and tablets at their native comfortable size, then grow proportionally. */
+@media (min-width: 96rem) {
+  html {
+    font-size: clamp(1rem, 0.625vw + 0.4rem, 1.1875rem);
+  }
+
+  :root {
+    --max-w: 80rem;
+  }
+}
+
 body {
   margin: 0;
   font-family: var(--font-sans);
