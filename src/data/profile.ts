@@ -136,7 +136,6 @@ Object.assign(profile, {
     {
       ...profile.education[0],
       period: 'Sep 2023 - Sep 2027',
-      logo: '/rwth-aachen-logo.png',
       notes: [
         'Robosys',
         "Master's program focused on robotics, machine learning, control systems, perception and intelligent autonomous systems.",
@@ -148,7 +147,6 @@ Object.assign(profile, {
       degree: 'Bachelor of Technology, Electrical and Electronics Engineering',
       school: 'Institute of Engineering & Management (IEM)',
       period: 'Mar 2018 - Sep 2022',
-      logo: '/iem-logo.jpg',
       notes: [
         'Grade: 8.72/10',
         "Bachelor's degree in Electrical and Electronics Engineering, covering electrical machines, power systems, electronics, control systems, programming and embedded systems.",
