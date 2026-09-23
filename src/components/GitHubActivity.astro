@@ -17,16 +17,20 @@ const chartUrl = `https://ghchart.xqsit94.in/light:0f62fe/${username}`;
 
 <style>
   .activity {
+    position: relative;
     display: block;
     padding: var(--sp-4);
-    background: var(--bg-layer);
-    border-top: 3px solid var(--accent);
-    transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+    background: var(--bg);
+    border: 1px solid var(--border-strong);
+    border-radius: 0;
+    box-shadow: 4px 4px 0 var(--accent-2);
+    transition: transform var(--dur) var(--ease), background var(--dur) var(--ease), border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
   }
-  .activity:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+  .activity:hover { background: var(--accent-tint); border-color: var(--accent); transform: translate(-3px, -3px); box-shadow: 7px 7px 0 var(--accent-2); }
   .activity__head { display: flex; justify-content: space-between; gap: var(--sp-3); margin-bottom: var(--sp-5); }
   .activity h3 { margin-top: var(--sp-2); font-size: 1.125rem; }
-  .activity__link { color: var(--accent); font-family: var(--font-mono); font-size: 0.75rem; white-space: nowrap; }
+  .activity__link { padding: 0.5rem 0.75rem; color: var(--accent); background: var(--bg); border: 1px solid var(--accent); box-shadow: 3px 3px 0 var(--accent-2); font-family: var(--font-mono); font-size: 0.75rem; white-space: nowrap; transition: color var(--dur) var(--ease), background var(--dur) var(--ease), transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease); }
+  .activity:hover .activity__link { color: var(--on-accent); background: var(--accent); box-shadow: 5px 5px 0 var(--accent-2); transform: translate(-2px, -2px); }
   .activity img { width: 100%; height: auto; min-height: 7rem; object-fit: contain; object-position: left; }
   @media (max-width: 640px) { .activity__head { flex-direction: column; gap: var(--sp-2); } .activity img { overflow-x: auto; } }
 </style>

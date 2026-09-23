@@ -26,20 +26,22 @@ const { title, summary, period, context, tags } = project.data;
 
 <style>
   .card {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: var(--sp-3);
     padding: var(--sp-4);
-    background: var(--bg-layer);
-    border: 1px solid transparent;
-    border-radius: var(--radius);
-    transition: border-color var(--dur) var(--ease), transform var(--dur) var(--ease),
-      box-shadow var(--dur) var(--ease);
+    background: var(--bg);
+    border: 1px solid var(--border-strong);
+    border-radius: 0;
+    box-shadow: 4px 4px 0 var(--accent-2);
+    transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease), transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
   }
   .card:hover {
     border-color: var(--accent);
-    transform: translateY(-4px);
-    box-shadow: var(--shadow);
+    background: var(--accent-tint);
+    transform: translate(-3px, -3px);
+    box-shadow: 7px 7px 0 var(--accent-2);
   }
   .card__meta {
     display: flex;
