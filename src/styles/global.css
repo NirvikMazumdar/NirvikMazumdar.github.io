@@ -284,6 +284,9 @@ summary,
   color: var(--text);
   font-weight: 700;
 }
+.lead__key--company {
+  font-weight: 800;
+}
 
 .entry__title {
   display: flex;

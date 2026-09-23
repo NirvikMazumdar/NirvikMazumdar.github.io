@@ -122,10 +122,25 @@ const pageTitle = title ? `${title} · ${profile.name}` : `${profile.name} — $
 
       const keyTerms = /(Robotic Systems Engineering|machine learning|embedded systems|IoT|control engineering|real-time firmware|sensor integration|radar systems|digital twins|backend|data architectures|ThingsBoard|MQTT|Thread|REST APIs|60 GHz FMCW radar)/gi;
       document.querySelectorAll<HTMLElement>('.lead').forEach((lead) => {
+        const employerStatement = /(At ENVIOTECH,[^.]*systems\.)/;
+        lead.childNodes.forEach((node) => {
+          if (node.nodeType !== Node.TEXT_NODE) return;
+          const value = node.nodeValue || '';
+          const match = value.match(employerStatement);
+          if (!match || match.index === undefined) return;
+          const fragment = document.createDocumentFragment();
+          fragment.append(document.createTextNode(value.slice(0, match.index)));
+          const emphasis = document.createElement('strong');
+          emphasis.className = 'lead__key lead__key--company';
+          emphasis.textContent = match[0];
+          fragment.append(emphasis, document.createTextNode(value.slice(match.index + match[0].length)));
+          node.replaceWith(fragment);
+        });
         const walker = document.createTreeWalker(lead, NodeFilter.SHOW_TEXT);
         const textNodes: Text[] = [];
         while (walker.nextNode()) textNodes.push(walker.currentNode as Text);
         textNodes.forEach((node) => {
+          if (node.parentElement?.closest('.lead__key')) return;
           const value = node.nodeValue || '';
           if (!keyTerms.test(value)) return;
           keyTerms.lastIndex = 0;
