@@ -117,7 +117,8 @@ const nav = [
     width: 2rem;
     height: 2rem;
     color: var(--text-2);
-    transition: color var(--dur) var(--ease), background var(--dur) var(--ease);
+    background: transparent;
+    transition: color var(--dur) var(--ease), filter var(--dur) var(--ease), transform var(--dur) var(--ease);
   }
   .nav__language {
     position: relative;
@@ -160,9 +161,13 @@ const nav = [
     background: var(--accent-tint);
   }
   .nav__theme:hover {
-    color: var(--text);
-    background: var(--bg-hover);
+    background: transparent;
+    transform: scale(1.08);
   }
+  .nav__theme .icon-sun { color: #f1c21b; }
+  .nav__theme .icon-moon { color: #4589ff; }
+  .nav__theme:hover .icon-sun { color: #ffdf00; filter: drop-shadow(0 0 0.4rem rgba(255, 223, 0, 0.72)); }
+  .nav__theme:hover .icon-moon { color: #a6c8ff; filter: drop-shadow(0 0 0.4rem rgba(166, 200, 255, 0.78)); }
   :global([data-theme='light']) .icon-sun,
   :global([data-theme='dark']) .icon-moon {
     display: none;
