@@ -46,6 +46,8 @@
   --on-accent: #ffffff;
   --nav-bg: rgba(255, 255, 255, 0.72);
   --shadow: 0 12px 28px rgba(22, 22, 22, 0.1);
+  --ambient-glow: rgba(15, 98, 254, 0.1);
+  --ambient-grid: rgba(15, 98, 254, 0.035);
 }
 
 [data-theme='dark'] {
@@ -66,6 +68,8 @@
   --on-accent: #001141;
   --nav-bg: rgba(22, 22, 22, 0.72);
   --shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+  --ambient-glow: rgba(69, 137, 255, 0.1);
+  --ambient-grid: rgba(161, 214, 255, 0.035);
 }
 
 /* ---------------------------------------------------------------------------
@@ -101,7 +105,13 @@ body {
   font-size: 1rem;
   line-height: 1.5;
   color: var(--text);
-  background: var(--bg);
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(circle at 92% 8%, var(--ambient-glow), transparent 30rem),
+    linear-gradient(var(--ambient-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--ambient-grid) 1px, transparent 1px);
+  background-size: auto, 4rem 4rem, 4rem 4rem;
+  background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
 }
