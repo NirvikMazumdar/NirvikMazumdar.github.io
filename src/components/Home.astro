@@ -16,6 +16,7 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
   <div class="container hero__grid"><div class="hero__text"><p class="mono hero__loc">{profile.location}</p><h1 class="hero__title"><span class="gradient-text">{text.headline}</span></h1><p class="hero__tagline muted">{text.tagline}</p><div class="hero__actions"><a class="btn btn--primary" href={profile.cv} target="_blank" rel="noopener">{text.labels.downloadCv} <span aria-hidden="true">↓</span></a>{profile.links.map((link) => <a class="btn btn--ghost" href={link.href} target="_blank" rel="noopener">{link.label} <span aria-hidden="true">↗</span></a>)}</div><ul class="hero__proof">{text.highlights.map((item) => <li><a href="#projects"><strong>{item.value}</strong><span>{item.label}</span></a></li>)}</ul><a class="hero__scroll mono" href="#projects">{text.explore} <span aria-hidden="true">↓</span></a></div><div class="hero__frame"><img class="hero__photo" src={profile.photo} alt={`Portrait of ${profile.name}`} width="480" height="640" /></div></div>
 </section>
 <Section id="about" index="01" label={text.labels.about}><p class="lead">{text.summary}</p><div class="focus" aria-label="Professional focus">{text.focus.map((item) => <div><p class="mono">{item.label}</p><p>{item.text}</p></div>)}</div><p class="mono stack-label">{text.labels.primaryStack}</p><ul class="chips">{profile.stack.map((item) => <li><a class="tag" href={getSkillHref(item)}>{item}</a></li>)}</ul></Section>
+<div class="industrial-scene" aria-hidden="true"><span></span></div>
 <Section id="experience" index="02" label={text.labels.experience}><ul class="timeline">{profile.experience.map((job) => <li class="entry"><div class="entry__head"><div><h3>{job.role}</h3><p class="muted">{job.org}</p></div><p class="mono entry__when">{job.period}<br />{job.location}</p></div><ul class="bullets">{job.bullets.map((item) => <li>{item}</li>)}</ul><ul class="chips">{job.tools.map((item) => <li><a class="tag" href={getSkillHref(item)}>{item}</a></li>)}</ul></li>)}</ul></Section>
 <Section id="projects" index="03" label={text.labels.projects}><div class="cards">{projects.map((project) => <ProjectCard project={project} />)}</div></Section>
 <Section id="activity" index="04" label="GitHub"><GitHubActivity /></Section>
@@ -30,6 +31,11 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
 
 <style>
   .hero__proof { gap: 0; overflow: hidden; background: transparent; border: 1px solid var(--border); border-radius: 1rem; box-shadow: 0 8px 24px rgba(22, 22, 22, 0.06); }
+  .industrial-scene { position: relative; height: clamp(12rem, 24vw, 20rem); margin-top: calc(var(--sp-7) * -.25); overflow: hidden; background: #0b3d75 url('/industrial-robotics-factory.png') center 58% / cover no-repeat; border-block: 1px solid var(--border); }
+  .industrial-scene::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(15, 98, 254, .24), transparent 55%, rgba(0, 17, 65, .32)); }
+  .industrial-scene::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 36%, rgba(255, 255, 255, .3) 50%, transparent 64%); transform: translateX(-100%); animation: factory-scan 9s var(--ease) infinite; }
+  .industrial-scene span { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.14) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px); background-size: 4rem 4rem; opacity: .28; animation: factory-grid 22s linear infinite; }
+  @keyframes factory-scan { 0%, 35% { transform: translateX(-100%); } 55%, 100% { transform: translateX(100%); } } @keyframes factory-grid { to { background-position: 4rem 4rem; } }
   .hero__proof li { border: 0; border-right: 1px solid var(--border); }
   .hero__proof li:last-child { border-right: 0; }
   .hero__proof a { padding: var(--sp-4) 3rem var(--sp-4) var(--sp-4); }
@@ -51,4 +57,5 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
   .more__level--fluent { color: #0e6027; background: #d9f7be; }
   :global([data-theme='dark']) .more__level--fluent { color: #a7f0ba; background: #0e3b1d; }
   @media (max-width: 768px) { .hero__proof li { border-right: 0; border-bottom: 1px solid var(--border); } .hero__proof li:last-child { border-bottom: 0; } .focus > div:not(:last-child) { border-right: 0; border-bottom: 1px solid var(--border); } }
+  @media (prefers-reduced-motion: reduce) { .industrial-scene::after, .industrial-scene span { animation: none; } }
 </style>
