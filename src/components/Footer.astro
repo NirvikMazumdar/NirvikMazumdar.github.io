@@ -7,6 +7,7 @@ const year = new Date().getFullYear();
 ---
 
 <footer class="footer" id="contact">
+  <div class="footer__factory" aria-hidden="true"></div>
   <div class="container footer__inner">
     <div>
       <p class="mono">{text.labels.contact}</p>
@@ -28,9 +29,37 @@ const year = new Date().getFullYear();
 
 <style>
   .footer {
+    position: relative;
+    overflow: hidden;
     margin-top: var(--sp-9);
-    border-top: 1px solid var(--border);
-    background: var(--bg-layer);
+    color: #fff;
+    background: #001d3d;
+    border-top: 1px solid var(--accent);
+  }
+  .footer__factory {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.72;
+    background-image: linear-gradient(90deg, rgba(0, 17, 65, .82), rgba(0, 43, 117, .56) 55%, rgba(0, 17, 65, .8)), url('/industrial-robotics-factory.png');
+    background-position: center, 44% 58%;
+    background-size: cover, cover;
+    animation: footer-factory-pan 26s ease-in-out infinite alternate;
+  }
+  .footer__factory::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 34%, rgba(161, 214, 255, .25) 50%, transparent 66%);
+    transform: translateX(-100%);
+    animation: footer-factory-scan 10s var(--ease) infinite;
+  }
+  @keyframes footer-factory-pan { from { background-position: center, 44% 58%; } to { background-position: center, 56% 58%; } }
+  @keyframes footer-factory-scan { 0%, 35% { transform: translateX(-100%); } 55%, 100% { transform: translateX(100%); } }
+  .footer__inner,
+  .footer__meta {
+    position: relative;
+    z-index: 1;
   }
   .footer__inner {
     display: grid;
@@ -44,7 +73,11 @@ const year = new Date().getFullYear();
   }
   .footer__mail {
     font-size: 1.125rem;
+    color: #fff;
   }
+  .footer .mono { color: #c6e4ff; }
+  .footer .link { color: #d0e2ff; }
+  .footer .link:hover { color: #fff; }
   .footer__links {
     display: flex;
     flex-direction: column;
@@ -55,7 +88,7 @@ const year = new Date().getFullYear();
     display: flex;
     justify-content: space-between;
     padding-block: var(--sp-4);
-    border-top: 1px solid var(--border);
+    border-top: 1px solid rgba(255, 255, 255, 0.28);
   }
   @media (max-width: 640px) {
     .footer__inner {
@@ -65,4 +98,5 @@ const year = new Date().getFullYear();
       padding-top: 0;
     }
   }
+  @media (prefers-reduced-motion: reduce) { .footer__factory, .footer__factory::after { animation: none; } }
 </style>
