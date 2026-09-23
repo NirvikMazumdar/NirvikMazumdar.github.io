@@ -107,6 +107,24 @@ const pageTitle = title ? `${title} · ${profile.name}` : `${profile.name} — $
         school.parentElement?.insertBefore(logo, school);
       });
 
+      const roleIcons = [
+        '<path d="M4 8h12v8H4zM7 8V5h6v3M8 12h4M10 10v4"/>',
+        '<circle cx="10" cy="10" r="5"/><circle cx="10" cy="10" r="1.5"/><path d="M10 2v2M10 16v2M2 10h2M16 10h2"/>',
+        '<path d="M3 12h3l2-7 3 10 2-5h4"/>',
+      ];
+      const educationIcon = '<path d="m2 8 8-4 8 4-8 4-8-4Z"/><path d="M5 10v4c2 2 8 2 10 0v-4M18 8v5"/>';
+      document.querySelectorAll<HTMLElement>('#experience .entry__head h3, #education .entry__head h3').forEach((title, index) => {
+        const isEducation = title.closest('#education') !== null;
+        const icon = document.createElement('span');
+        icon.className = isEducation ? 'entry__role-icon entry__role-icon--education' : 'entry__role-icon';
+        icon.setAttribute('aria-hidden', 'true');
+        icon.innerHTML = `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">${isEducation ? educationIcon : roleIcons[index] || roleIcons[0]}</svg>`;
+        const row = document.createElement('div');
+        row.className = 'entry__title';
+        title.before(row);
+        row.append(icon, title);
+      });
+
       const featuredSkills = new Set(['Python', 'C++', 'ROS', 'Fastify / Node.js', 'PostgreSQL', 'ThingsBoard', 'MQTT', 'Thread', 'Grafana', 'Docker']);
       document.querySelectorAll<HTMLElement>('.tag').forEach((tag) => {
         if (featuredSkills.has(tag.textContent?.trim() || '')) tag.classList.add('tag--featured');
