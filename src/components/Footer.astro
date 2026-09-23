@@ -8,6 +8,18 @@ const year = new Date().getFullYear();
 
 <footer class="footer" id="contact">
   <div class="footer__factory" aria-hidden="true"></div>
+  <svg class="footer__robot-arm footer__robot-arm--left" viewBox="0 0 280 210" aria-hidden="true">
+    <g class="robot-arm__upper"><path d="M42 176 L118 112" /><circle cx="42" cy="176" r="14" /><circle cx="118" cy="112" r="10" />
+      <g class="robot-arm__forearm"><path d="M118 112 L188 142" /><circle cx="188" cy="142" r="8" /><path class="robot-arm__gripper" d="M186 142 l28 -12 m-28 12 l24 18 m4 -30 l10 -14 m-10 14 l16 3" /></g>
+    </g>
+    <path class="robot-arm__base" d="M18 195h48l-8-19H26z" />
+  </svg>
+  <svg class="footer__robot-arm footer__robot-arm--right" viewBox="0 0 280 210" aria-hidden="true">
+    <g class="robot-arm__upper"><path d="M236 180 L164 104" /><circle cx="236" cy="180" r="14" /><circle cx="164" cy="104" r="10" />
+      <g class="robot-arm__forearm"><path d="M164 104 L98 130" /><circle cx="98" cy="130" r="8" /><path class="robot-arm__gripper" d="M100 130 L70 118 m30 12 L76 148 m-6 -30 l-11 -13 m11 13 l-16 3" /></g>
+    </g>
+    <path class="robot-arm__base" d="M212 198h48l-8-19h-32z" />
+  </svg>
   <div class="container footer__inner">
     <div>
       <p class="mono">{text.labels.contact}</p>
@@ -54,6 +66,29 @@ const year = new Date().getFullYear();
     transform: translateX(-100%);
     animation: footer-factory-scan 10s var(--ease) infinite;
   }
+  .footer__robot-arm {
+    position: absolute;
+    z-index: 0;
+    width: clamp(13rem, 24vw, 21rem);
+    color: rgba(161, 214, 255, 0.48);
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    pointer-events: none;
+    opacity: 0.48;
+    filter: drop-shadow(0 0 8px rgba(15, 98, 254, 0.38));
+  }
+  .footer__robot-arm--left { left: -2.5rem; bottom: -1rem; }
+  .footer__robot-arm--right { right: -2.5rem; top: 0.5rem; transform: scale(.9); }
+  .robot-arm__upper { transform-box: fill-box; transform-origin: 18% 82%; animation: robot-arm-sweep 9s ease-in-out infinite alternate; }
+  .robot-arm__forearm { transform-box: fill-box; transform-origin: 18% 18%; animation: robot-arm-reach 6s ease-in-out infinite alternate; }
+  .footer__robot-arm--right .robot-arm__upper { animation-delay: -4s; }
+  .footer__robot-arm--right .robot-arm__forearm { animation-delay: -2s; }
+  .robot-arm__base { fill: rgba(15, 98, 254, 0.34); stroke-width: 3; }
+  @keyframes robot-arm-sweep { from { transform: rotate(-4deg); } to { transform: rotate(6deg); } }
+  @keyframes robot-arm-reach { from { transform: rotate(-9deg); } to { transform: rotate(10deg); } }
   @keyframes footer-factory-pan { from { background-position: center, 44% 58%; } to { background-position: center, 56% 58%; } }
   @keyframes footer-factory-scan { 0%, 35% { transform: translateX(-100%); } 55%, 100% { transform: translateX(100%); } }
   .footer__inner,
@@ -120,5 +155,6 @@ const year = new Date().getFullYear();
       padding-top: 0;
     }
   }
-  @media (prefers-reduced-motion: reduce) { .footer__factory, .footer__factory::after { animation: none; } }
+  @media (max-width: 640px) { .footer__robot-arm { opacity: 0.22; } .footer__robot-arm--right { display: none; } }
+  @media (prefers-reduced-motion: reduce) { .footer__factory, .footer__factory::after, .robot-arm__upper, .robot-arm__forearm { animation: none; } }
 </style>
