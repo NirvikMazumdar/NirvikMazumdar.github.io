@@ -1,0 +1,286 @@
+/* ---------------------------------------------------------------------------
+   Design tokens — Carbon-inspired palette and spacing, Apple-inspired type scale.
+   Change colours/spacing here and the whole site follows.
+--------------------------------------------------------------------------- */
+:root {
+  --font-sans: 'IBM Plex Sans Variable', system-ui, -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+
+  /* 8px spacing scale (Carbon) */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 1rem;
+  --sp-4: 1.5rem;
+  --sp-5: 2rem;
+  --sp-6: 3rem;
+  --sp-7: 4rem;
+  --sp-8: 6rem;
+  --sp-9: 8rem;
+
+  --max-w: 72rem;
+  --gutter: var(--sp-4);
+  --nav-h: 3rem;
+  --radius: 0; /* Carbon is sharp; set to 0.75rem for a softer Apple look */
+
+  --ease: cubic-bezier(0.2, 0, 0.38, 0.9); /* Carbon "productive" easing */
+  --dur: 150ms;
+}
+
+[data-theme='light'] {
+  color-scheme: light;
+  --bg: #ffffff;
+  --bg-layer: #f4f4f4;
+  --bg-hover: #e8e8e8;
+  --text: #161616;
+  --text-2: #525252;
+  --text-3: #8d8d8d;
+  --border: #e0e0e0;
+  --border-strong: #8d8d8d;
+  /* Neon green. Light mode uses a deeper green so text stays readable on white. */
+  --accent: #00a844;
+  --accent-hover: #008c38;
+  --accent-2: #39ff14; /* neon */
+  --accent-3: #00d4a4; /* mint */
+  --accent-tint: #e8ffe6;
+  --on-accent: #ffffff;
+  --nav-bg: rgba(255, 255, 255, 0.72);
+  --shadow: 0 12px 32px rgba(57, 255, 20, 0.2);
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #161616;
+  --bg-layer: #262626;
+  --bg-hover: #333333;
+  --text: #f4f4f4;
+  --text-2: #c6c6c6;
+  --text-3: #8d8d8d;
+  --border: #393939;
+  --border-strong: #6f6f6f;
+  --accent: #39ff14; /* neon */
+  --accent-hover: #7dff5e;
+  --accent-2: #b6ff6a;
+  --accent-3: #00ffc8;
+  --accent-tint: #12301a;
+  --on-accent: #0b1a0e;
+  --nav-bg: rgba(22, 22, 22, 0.72);
+  --shadow: 0 12px 32px rgba(57, 255, 20, 0.18);
+}
+
+/* ---------------------------------------------------------------------------
+   Base
+--------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-h) + var(--sp-4));
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------------------------
+   Utilities
+--------------------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  color: var(--text-3);
+}
+
+.muted {
+  color: var(--text-2);
+}
+
+.link {
+  color: var(--accent);
+  transition: color var(--dur) var(--ease);
+}
+.link:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+/* Carbon-style button: sharp, left-aligned label, arrow on the right */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-5);
+  min-width: 10rem;
+  padding: 0.875rem var(--sp-3);
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.btn--primary {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+.btn--primary:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+.btn--ghost {
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+.btn--ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+.btn {
+  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease),
+    color var(--dur) var(--ease), transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.125rem 0.625rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--accent);
+  background: var(--accent-tint);
+  border-radius: 999px;
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.tag:hover {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+/* Gradient headline (blue → purple → teal) */
+.gradient-text {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2) 55%, var(--accent-3));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Scroll-in reveal: elements start hidden, .is-visible is added by Base.astro */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 600ms var(--ease), transform 600ms var(--ease);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Prose (Markdown bodies on project pages) */
+.prose {
+  max-width: 44rem;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--text-2);
+}
+.prose h2, .prose h3 {
+  color: var(--text);
+  margin-top: var(--sp-6);
+  margin-bottom: var(--sp-3);
+}
+.prose p {
+  margin-bottom: var(--sp-3);
+}
+.prose ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+  margin-bottom: var(--sp-3);
+}
+.prose li {
+  margin-bottom: var(--sp-2);
+}
+.prose a {
+  color: var(--accent);
+}
+.prose a:hover {
+  text-decoration: underline;
+}
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: var(--bg-layer);
+  padding: 0.1em 0.35em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    transition-duration: 0ms !important;
+    animation: none !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

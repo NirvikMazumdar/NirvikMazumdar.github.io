@@ -1,0 +1,77 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((p) => ({ params: { slug: p.id }, props: { project: p } }));
+}
+
+const { project } = Astro.props;
+const { title, summary, period, context, tags, links } = project.data;
+const { Content } = await render(project);
+---
+
+<Base title={title} description={summary}>
+  <article class="container project">
+    <a class="back link" href="/#projects">← Projects</a>
+    <p class="mono meta">
+      {context && <span>{context}</span>}
+      {context && period && <span> · </span>}
+      {period && <span>{period}</span>}
+    </p>
+    <h1 class="title">{title}</h1>
+    <p class="summary muted">{summary}</p>
+    {tags.length > 0 && (
+      <ul class="tags">
+        {tags.map((t) => <li class="tag">{t}</li>)}
+      </ul>
+    )}
+    {links.length > 0 && (
+      <ul class="links">
+        {links.map((l) => (
+          <li><a class="link" href={l.href} target="_blank" rel="noopener">{l.label} ↗</a></li>
+        ))}
+      </ul>
+    )}
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+</Base>
+
+<style>
+  .project {
+    padding-block: var(--sp-7);
+  }
+  .back {
+    display: inline-block;
+    font-size: 0.875rem;
+    margin-bottom: var(--sp-6);
+  }
+  .meta {
+    margin-bottom: var(--sp-2);
+  }
+  .title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    letter-spacing: -0.03em;
+    max-width: 20ch;
+  }
+  .summary {
+    font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+    max-width: 44rem;
+    margin-top: var(--sp-3);
+  }
+  .tags,
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-1) var(--sp-3);
+    margin-top: var(--sp-4);
+  }
+  .prose {
+    margin-top: var(--sp-6);
+    padding-top: var(--sp-6);
+    border-top: 1px solid var(--border);
+  }
+</style>

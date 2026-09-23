@@ -1,0 +1,65 @@
+---
+import { profile } from '../data/profile';
+const year = new Date().getFullYear();
+---
+
+<footer class="footer" id="contact">
+  <div class="container footer__inner">
+    <div>
+      <p class="mono">Contact</p>
+      <h2 class="footer__headline">Let’s build something.</h2>
+      <a class="footer__mail link" href={`mailto:${profile.email}`}>{profile.email}</a>
+    </div>
+    <ul class="footer__links">
+      {profile.links.map((l) => (
+        <li><a class="link" href={l.href} target="_blank" rel="noopener">{l.label} ↗</a></li>
+      ))}
+      <li><a class="link" href={profile.cv} target="_blank" rel="noopener">CV (PDF) ↗</a></li>
+    </ul>
+  </div>
+  <div class="container footer__meta">
+    <span class="mono">© {year} {profile.name}</span>
+    <span class="mono">{profile.location}</span>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    margin-top: var(--sp-9);
+    border-top: 1px solid var(--border);
+    background: var(--bg-layer);
+  }
+  .footer__inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--sp-6);
+    padding-block: var(--sp-8) var(--sp-6);
+  }
+  .footer__headline {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin-block: var(--sp-2) var(--sp-4);
+  }
+  .footer__mail {
+    font-size: 1.125rem;
+  }
+  .footer__links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-2);
+    padding-top: var(--sp-6);
+  }
+  .footer__meta {
+    display: flex;
+    justify-content: space-between;
+    padding-block: var(--sp-4);
+    border-top: 1px solid var(--border);
+  }
+  @media (max-width: 640px) {
+    .footer__inner {
+      grid-template-columns: 1fr;
+    }
+    .footer__links {
+      padding-top: 0;
+    }
+  }
+</style>

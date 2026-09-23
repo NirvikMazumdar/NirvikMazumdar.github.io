@@ -1,0 +1,76 @@
+---
+import type { CollectionEntry } from 'astro:content';
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+const { project } = Astro.props;
+const { title, summary, period, context, tags } = project.data;
+---
+
+<a class="card" href={`/projects/${project.id}/`}>
+  <div class="card__meta mono">
+    {context && <span>{context}</span>}
+    {period && <span>{period}</span>}
+  </div>
+  <h3 class="card__title">{title}</h3>
+  <p class="card__summary muted">{summary}</p>
+  <div class="card__foot">
+    <div class="card__tags">
+      {tags.slice(0, 4).map((t) => <span class="tag">{t}</span>)}
+    </div>
+    <svg class="card__arrow" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+      <path d="M3 10h13M11 5l5 5-5 5" />
+    </svg>
+  </div>
+</a>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+    padding: var(--sp-4);
+    background: var(--bg-layer);
+    border: 1px solid transparent;
+    border-radius: var(--radius);
+    transition: border-color var(--dur) var(--ease), transform var(--dur) var(--ease),
+      box-shadow var(--dur) var(--ease);
+  }
+  .card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+  }
+  .card__meta {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--sp-3);
+  }
+  .card__title {
+    font-size: 1.25rem;
+  }
+  .card__summary {
+    font-size: 0.9375rem;
+    flex: 1;
+  }
+  .card__foot {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--sp-3);
+    margin-top: var(--sp-2);
+  }
+  .card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-1);
+  }
+  .card__arrow {
+    flex: none;
+    color: var(--accent);
+    transition: transform var(--dur) var(--ease);
+  }
+  .card:hover .card__arrow {
+    transform: translateX(4px);
+  }
+</style>

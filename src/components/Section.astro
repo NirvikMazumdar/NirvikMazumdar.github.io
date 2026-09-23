@@ -1,0 +1,57 @@
+---
+// Two-column section: sticky label column on the left, content on the right.
+interface Props {
+  id: string;
+  index: string; // e.g. "01"
+  label: string;
+}
+const { id, index, label } = Astro.props;
+---
+
+<section id={id} class="section reveal">
+  <div class="container section__grid">
+    <div class="section__label">
+      <span class="mono section__index">{index}</span>
+      <h2>{label}</h2>
+    </div>
+    <div class="section__body">
+      <slot />
+    </div>
+  </div>
+</section>
+
+<style>
+  .section {
+    border-top: 1px solid var(--border);
+    padding-block: var(--sp-7);
+  }
+  .section__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
+    gap: var(--sp-6);
+  }
+  .section__label {
+    position: sticky;
+    top: calc(var(--nav-h) + var(--sp-5));
+    align-self: start;
+  }
+  .section__index {
+    color: var(--accent);
+  }
+  .section__label h2 {
+    font-size: 1.125rem;
+    margin-top: var(--sp-2);
+  }
+  @media (max-width: 768px) {
+    .section {
+      padding-block: var(--sp-6);
+    }
+    .section__grid {
+      grid-template-columns: 1fr;
+      gap: var(--sp-4);
+    }
+    .section__label {
+      position: static;
+    }
+  }
+</style>
