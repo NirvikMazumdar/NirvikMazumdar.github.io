@@ -4,27 +4,31 @@ import '@fontsource/ibm-plex-mono/400.css';
 import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
-import { profile } from '../data/profile';
+import ScrollControl from '../components/ScrollControl.astro';
+import { copy, profile, type Locale } from '../data/profile';
 
 interface Props {
   title?: string;
   description?: string;
+  locale?: Locale;
 }
 
-const { title, description = profile.summary } = Astro.props;
-const pageTitle = title ? `${title} · ${profile.name}` : `${profile.name} — ${profile.tagline}`;
+const { title, locale = 'en' } = Astro.props;
+const text = copy[locale];
+const pageDescription = Astro.props.description || text.summary;
+const pageTitle = title ? `${title} · ${profile.name}` : `${profile.name} — ${text.tagline}`;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={locale}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
-    <meta name="description" content={description} />
+    <meta name="description" content={pageDescription} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta property="og:title" content={pageTitle} />
-    <meta property="og:description" content={description} />
+    <meta property="og:description" content={pageDescription} />
     <meta property="og:image" content={profile.photo} />
     <!-- Apply theme before first paint to avoid a flash -->
     <script is:inline>
@@ -33,11 +37,12 @@ const pageTitle = title ? `${title} · ${profile.name}` : `${profile.name} — $
     </script>
   </head>
   <body>
-    <Nav />
+    <Nav locale={locale} />
     <main>
       <slot />
     </main>
-    <Footer />
+    <Footer locale={locale} />
+    <ScrollControl />
     <script>
       // Reveal-on-scroll
       const revealObserver = new IntersectionObserver(

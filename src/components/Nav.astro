@@ -1,13 +1,33 @@
 ---
-import { profile, nav } from '../data/profile';
+import { copy, localePath, profile, type Locale } from '../data/profile';
+interface Props { locale?: Locale }
+const { locale = 'en' } = Astro.props;
+const labels = copy[locale].labels;
+const nav = [
+  { label: labels.about, href: '#about' },
+  { label: labels.experience, href: '#experience' },
+  { label: labels.projects, href: '#projects' },
+  { label: labels.education, href: '#education' },
+  { label: labels.skills, href: '#skills' },
+  { label: labels.contact, href: '#contact' },
+];
 ---
 
 <header class="nav">
   <div class="container nav__inner">
-    <a href="/" class="nav__brand">{profile.name}</a>
+    <a href={localePath(locale)} class="nav__brand">{profile.name}</a>
     <nav class="nav__links" aria-label="Primary">
-      {nav.map((item) => <a href={item.href}>{item.label}</a>)}
+      {nav.map((item) => <a href={`${localePath(locale)}${item.href}`}>{item.label}</a>)}
     </nav>
+    <details class="nav__language">
+      <summary aria-label="Change language">Language</summary>
+      <div class="nav__language-menu">
+        <a href="/" aria-current={locale === 'en' ? 'page' : undefined}>English</a>
+        <a href="/de/" aria-current={locale === 'de' ? 'page' : undefined}>Deutsch</a>
+        <a href="/fr/" aria-current={locale === 'fr' ? 'page' : undefined}>Français</a>
+        <a href="/nl/" aria-current={locale === 'nl' ? 'page' : undefined}>Nederlands</a>
+      </div>
+    </details>
     <button class="nav__theme" id="theme-toggle" aria-label="Toggle colour theme" title="Toggle theme">
       <svg class="icon-sun" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
         <circle cx="8" cy="8" r="3.25" />
@@ -64,10 +84,12 @@ import { profile, nav } from '../data/profile';
   }
   .nav__links a {
     position: relative;
+    padding: 0.25rem 0.375rem;
+    margin-inline: -0.375rem;
     font-size: 0.8125rem;
     color: var(--text-2);
     white-space: nowrap;
-    transition: color var(--dur) var(--ease);
+    transition: color var(--dur) var(--ease), background var(--dur) var(--ease);
   }
   .nav__links a::after {
     content: '';
@@ -83,7 +105,8 @@ import { profile, nav } from '../data/profile';
   }
   .nav__links a:hover,
   .nav__links a.is-active {
-    color: var(--text);
+    color: var(--accent);
+    background: var(--accent-tint);
   }
   .nav__links a.is-active::after {
     transform: scaleX(1);
@@ -95,6 +118,46 @@ import { profile, nav } from '../data/profile';
     height: 2rem;
     color: var(--text-2);
     transition: color var(--dur) var(--ease), background var(--dur) var(--ease);
+  }
+  .nav__language {
+    position: relative;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+  }
+  .nav__language summary {
+    list-style: none;
+    padding: 0.5rem 0.625rem;
+    border: 1px solid var(--border);
+    color: var(--text-2);
+    cursor: pointer;
+  }
+  .nav__language summary::-webkit-details-marker { display: none; }
+  .nav__language summary::before { content: '◎'; margin-right: 0.4rem; color: var(--accent); }
+  .nav__language summary:hover,
+  .nav__language[open] summary {
+    color: var(--accent);
+    background: var(--accent-tint);
+    border-color: var(--accent);
+  }
+  .nav__language-menu {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 0.5rem);
+    display: grid;
+    min-width: 9rem;
+    padding: 0.25rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+  }
+  .nav__language a {
+    padding: 0.5rem 0.625rem;
+    color: var(--text-3);
+  }
+  .nav__language a:hover,
+  .nav__language a[aria-current='page'] {
+    color: var(--accent);
+    background: var(--accent-tint);
   }
   .nav__theme:hover {
     color: var(--text);
@@ -111,6 +174,10 @@ import { profile, nav } from '../data/profile';
     }
     .nav__theme {
       margin-left: auto;
+    }
+    .nav__language { margin-left: auto; }
+    .nav__theme {
+      margin-left: 0;
     }
   }
 </style>

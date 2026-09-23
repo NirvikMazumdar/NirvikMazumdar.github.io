@@ -1,13 +1,16 @@
 ---
-import { profile } from '../data/profile';
+import { copy, profile, type Locale } from '../data/profile';
+interface Props { locale?: Locale }
+const { locale = 'en' } = Astro.props;
+const text = copy[locale];
 const year = new Date().getFullYear();
 ---
 
 <footer class="footer" id="contact">
   <div class="container footer__inner">
     <div>
-      <p class="mono">Contact</p>
-      <h2 class="footer__headline">Let’s build something.</h2>
+      <p class="mono">{text.labels.contact}</p>
+      <h2 class="footer__headline">{text.footerHeadline}</h2>
       <a class="footer__mail link" href={`mailto:${profile.email}`}>{profile.email}</a>
     </div>
     <ul class="footer__links">

@@ -1,0 +1,101 @@
+<div class="scroll-progress" aria-hidden="true"><span id="scroll-progress-bar"></span></div>
+<button class="scroll-control" id="scroll-control" type="button" aria-label="Explore profile" title="Explore profile">
+  <svg class="scroll-control__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+    <path id="scroll-control-icon" d="M10 3v13M5 11l5 5 5-5" />
+  </svg>
+</button>
+
+<script>
+  const control = document.getElementById('scroll-control');
+  const icon = document.getElementById('scroll-control-icon');
+  const progressBar = document.getElementById('scroll-progress-bar');
+  const updateControl = () => {
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = scrollable > 0 ? Math.min(window.scrollY / scrollable, 1) : 0;
+    const isAtEnd = scrollable <= 0 || window.scrollY >= scrollable - 2;
+    control?.setAttribute('aria-label', isAtEnd ? 'Back to top' : 'Explore profile');
+    control?.setAttribute('title', isAtEnd ? 'Back to top' : 'Explore profile');
+    control?.classList.toggle('is-return', isAtEnd);
+    icon?.setAttribute('d', isAtEnd ? 'M10 17V4M5 9l5-5 5 5' : 'M10 3v13M5 11l5 5 5-5');
+    if (progressBar) progressBar.style.transform = `scaleX(${progress})`;
+  };
+  control?.addEventListener('click', () => {
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    const isAtEnd = scrollable <= 0 || window.scrollY >= scrollable - 2;
+    if (isAtEnd) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    const nextSection = [...document.querySelectorAll<HTMLElement>('main section[id]')]
+      .find((section) => section.offsetTop > window.scrollY + 16);
+    window.scrollTo({ top: nextSection?.offsetTop ?? scrollable, behavior: 'smooth' });
+  });
+  window.addEventListener('scroll', updateControl, { passive: true });
+  updateControl();
+</script>
+
+<style>
+  .scroll-progress {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 30;
+    height: 2px;
+    background: transparent;
+  }
+  .scroll-progress span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 80ms linear;
+  }
+  .scroll-control {
+    position: fixed;
+    right: var(--sp-4);
+    bottom: var(--sp-4);
+    z-index: 20;
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    color: var(--on-accent);
+    background: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    box-shadow: var(--shadow);
+    transition: transform var(--dur) var(--ease), background var(--dur) var(--ease);
+    animation: scroll-prompt 2.2s var(--ease) infinite;
+  }
+  .scroll-control:hover { background: var(--accent-hover); transform: translateY(-3px) scale(1.04); }
+  .scroll-control.is-return { animation: scroll-return 2.2s var(--ease) infinite; }
+  @keyframes scroll-prompt {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(0.35rem); }
+  }
+  @keyframes scroll-return {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-0.35rem); }
+  }
+  .scroll-control::before {
+    content: attr(title);
+    position: absolute;
+    right: calc(100% + 0.75rem);
+    width: max-content;
+    padding: 0.4rem 0.6rem;
+    color: var(--text);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(0.25rem);
+    transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+  }
+  .scroll-control:hover::before,
+  .scroll-control:focus-visible::before { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .scroll-control { animation: none; } }
+  @media (max-width: 640px) { .scroll-control { right: var(--sp-3); bottom: var(--sp-3); width: 2.75rem; height: 2.75rem; } }
+</style>

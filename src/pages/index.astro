@@ -3,7 +3,8 @@ import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Section from '../components/Section.astro';
 import ProjectCard from '../components/ProjectCard.astro';
-import { profile } from '../data/profile';
+import GitHubActivity from '../components/GitHubActivity.astro';
+import { getSkillHref, profile } from '../data/profile';
 
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
 ---
@@ -30,6 +31,12 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
             </a>
           ))}
         </div>
+        <ul class="hero__proof" aria-label="Career highlights">
+          <li><a href="#projects"><strong>ROS + C++</strong><span>robotics software foundation</span></a></li>
+          <li><a href="#projects"><strong>IMU + firmware</strong><span>embedded sensing prototypes</span></a></li>
+          <li><a href="#projects"><strong>ML control</strong><span>learning and optimisation systems</span></a></li>
+        </ul>
+        <a class="hero__scroll mono" href="#projects">View selected work <span aria-hidden="true">↓</span></a>
       </div>
       <div class="hero__frame">
         <img class="hero__photo" src={profile.photo} alt={`Portrait of ${profile.name}`} width="480" height="640" />
@@ -40,9 +47,26 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
   <!-- About -->
   <Section id="about" index="01" label="About">
     <p class="lead">{profile.summary}</p>
+    <div class="focus" aria-label="Robotics profile at a glance">
+      <div>
+        <p class="mono">01 / SENSE</p>
+        <h3>Embedded sensing</h3>
+        <p>IMU-based interaction prototypes, Arduino and real-time signal handling.</p>
+      </div>
+      <div>
+        <p class="mono">02 / DECIDE</p>
+        <h3>Control & learning</h3>
+        <p>Model-based control, simulation and machine-learning evaluation.</p>
+      </div>
+      <div>
+        <p class="mono">03 / DEPLOY</p>
+        <h3>Systems integration</h3>
+        <p>Firmware, APIs and data platforms connected to real devices.</p>
+      </div>
+    </div>
     <p class="mono stack-label">Primary tech stack</p>
     <ul class="chips">
-      {profile.stack.map((s) => <li class="tag">{s}</li>)}
+      {profile.stack.map((s) => <li><a class="tag" href={getSkillHref(s)}>{s}</a></li>)}
     </ul>
   </Section>
 
@@ -63,7 +87,7 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
           </ul>
           {job.tools.length > 0 && (
             <ul class="chips">
-              {job.tools.map((t) => <li class="tag">{t}</li>)}
+              {job.tools.map((t) => <li><a class="tag" href={getSkillHref(t)}>{t}</a></li>)}
             </ul>
           )}
         </li>
@@ -78,8 +102,12 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
     </div>
   </Section>
 
+  <Section id="activity" index="04" label="GitHub">
+    <GitHubActivity />
+  </Section>
+
   <!-- Education -->
-  <Section id="education" index="04" label="Education">
+  <Section id="education" index="05" label="Education">
     <ul class="timeline">
       {profile.education.map((ed) => (
         <li class="entry">
@@ -101,7 +129,7 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
   </Section>
 
   <!-- Skills -->
-  <Section id="skills" index="05" label="Skills">
+  <Section id="skills" index="06" label="Skills">
     <dl class="skills">
       {profile.skills.map((s) => (
         <div class="skills__row">
@@ -113,21 +141,21 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
   </Section>
 
   <!-- More -->
-  <Section id="more" index="06" label="More">
+  <Section id="more" index="07" label="More">
     <div class="more">
-      <div>
+      <div class="more__panel">
         <p class="mono">Languages</p>
-        <ul class="plain">
-          {profile.languages.map((l) => <li>{l.name} <span class="muted">— {l.level}</span></li>)}
+        <ul class="plain plain--languages">
+          {profile.languages.map((l) => <li><span>{l.name}</span><span class:list={['more__level', { 'more__level--fluent': !l.level.startsWith('A2') }]}>{l.level}</span></li>)}
         </ul>
       </div>
-      <div>
+      <div class="more__panel">
         <p class="mono">Achievements & volunteering</p>
         <ul class="plain">
           {profile.achievements.map((a) => <li>{a}</li>)}
         </ul>
       </div>
-      <div>
+      <div class="more__panel">
         <p class="mono">Interests</p>
         <ul class="plain">
           {profile.interests.map((i) => <li>{i}</li>)}
@@ -149,8 +177,8 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
     width: 36rem;
     height: 36rem;
     border-radius: 50%;
-    filter: blur(90px);
-    opacity: 0.35;
+    filter: blur(100px);
+    display: none;
     pointer-events: none;
     animation: drift 18s ease-in-out infinite alternate;
   }
@@ -162,7 +190,8 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
   .hero__glow--2 {
     right: -10rem;
     bottom: -16rem;
-    background: var(--accent-2);
+    background: var(--text-3);
+    opacity: 0.08;
     animation-delay: -9s;
   }
   @keyframes drift {
@@ -207,19 +236,79 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
     gap: var(--sp-2);
     margin-top: var(--sp-6);
   }
+  .hero__proof {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+    margin-top: var(--sp-6);
+    max-width: 44rem;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    box-shadow: 0 8px 24px rgba(22, 22, 22, 0.06);
+    animation: rise 600ms var(--ease) 220ms both;
+  }
+  .hero__proof li {
+    background: var(--bg);
+    border-right: 1px solid var(--border);
+  }
+  .hero__proof li:last-child { border-right: 0; }
+  .hero__proof a {
+    position: relative;
+    display: grid;
+    gap: var(--sp-1);
+    height: 100%;
+    padding: var(--sp-4) 3rem var(--sp-4) var(--sp-4);
+    overflow: hidden;
+    transition: background var(--dur) var(--ease), transform var(--dur) var(--ease);
+  }
+  .hero__proof a::after {
+    content: '↘';
+    position: absolute;
+    right: var(--sp-3);
+    bottom: var(--sp-3);
+    color: var(--accent);
+    opacity: 0;
+    transform: translate(-0.25rem, -0.25rem);
+    transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+  }
+  .hero__proof a:hover,
+  .hero__proof a:focus-visible {
+    background: var(--accent-tint);
+    transform: translateY(-2px);
+  }
+  .hero__proof a:hover::after,
+  .hero__proof a:focus-visible::after { opacity: 1; transform: none; }
+  .hero__proof strong {
+    color: var(--accent);
+    font-size: 1.125rem;
+    letter-spacing: -0.02em;
+  }
+  .hero__proof span {
+    color: var(--text-2);
+    font-size: 0.8125rem;
+    line-height: 1.35;
+  }
+  .hero__scroll {
+    display: inline-flex;
+    gap: var(--sp-2);
+    margin-top: var(--sp-4);
+    color: var(--text-2);
+  }
+  .hero__scroll:hover { color: var(--accent); }
   .hero__frame {
     position: relative;
     justify-self: end;
     width: 100%;
     max-width: 22rem;
   }
-  /* Offset Carbon-blue frame behind the photo */
+  /* Offset accent frame behind the photo */
   .hero__frame::before {
     content: '';
     position: absolute;
     inset: 0;
     transform: translate(1rem, 1rem);
-    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    background: var(--accent);
     border-radius: var(--radius);
     z-index: -1;
     transition: transform 300ms var(--ease);
@@ -230,8 +319,9 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
   .hero__photo {
     width: 100%;
     height: auto;
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 4 / 5;
     object-fit: cover;
+    object-position: center 72%;
     border-radius: var(--radius);
   }
 
@@ -245,6 +335,34 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
     margin-top: var(--sp-6);
     margin-bottom: var(--sp-2);
   }
+  .focus {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+    margin-top: var(--sp-5);
+    border: 1px solid var(--border);
+    background: var(--border);
+  }
+  .focus > div {
+    position: relative;
+    min-height: 12rem;
+    padding: var(--sp-4);
+    overflow: hidden;
+    background: var(--bg);
+    transition: background var(--dur) var(--ease);
+  }
+  .focus > div:not(:last-child) { border-right: 1px solid var(--border); }
+  .focus > div::after { content: '↗'; position: absolute; right: var(--sp-3); bottom: var(--sp-3); color: var(--accent); opacity: 0; transform: translate(-.25rem, .25rem); transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease); }
+  .focus > div:hover {
+    background: var(--accent-tint);
+  }
+  .focus > div:hover::after { opacity: 1; transform: none; }
+  .focus h3 {
+    margin-block: var(--sp-3) var(--sp-2);
+    font-size: 1.125rem;
+  }
+  .focus .mono { color: var(--accent); }
+  .focus p:last-child { color: var(--text-2); font-size: 0.9375rem; }
   .chips {
     display: flex;
     flex-wrap: wrap;
@@ -330,7 +448,10 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
   .more {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: var(--sp-5);
+    gap: var(--sp-4);
+  }
+  .more__panel {
+    padding-top: 0;
   }
   .plain {
     display: flex;
@@ -338,6 +459,29 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
     gap: var(--sp-1);
     margin-top: var(--sp-2);
   }
+  .plain li {
+    padding: var(--sp-2) 0;
+    border-bottom: 1px solid var(--border);
+    transition: color var(--dur) var(--ease), padding var(--dur) var(--ease);
+  }
+  .plain li:hover { padding-left: var(--sp-2); color: var(--accent); }
+  .plain--languages li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-2);
+  }
+  .more__level {
+    flex: none;
+    padding: 0.125rem 0.5rem;
+    color: var(--accent);
+    background: var(--accent-tint);
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+  }
+  .more__level--fluent { color: #0e6027; background: #d9f7be; }
+  :global([data-theme='dark']) .more__level--fluent { color: #a7f0ba; background: #0e3b1d; }
 
   @media (max-width: 768px) {
     .hero {
@@ -351,14 +495,22 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
       max-width: 12rem;
       justify-self: start;
     }
+    .hero__proof {
+      grid-template-columns: 1fr;
+      max-width: 20rem;
+    }
+    .hero__proof li { border-right: 0; border-bottom: 1px solid var(--border); }
+    .hero__proof li:last-child { border-bottom: 0; }
     .hero__glow {
       width: 20rem;
       height: 20rem;
     }
     .cards,
-    .more {
+    .more,
+    .focus {
       grid-template-columns: 1fr;
     }
+    .focus > div:not(:last-child) { border-right: 0; border-bottom: 1px solid var(--border); }
     .entry__head {
       flex-direction: column;
       gap: var(--sp-1);
@@ -370,5 +522,10 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
       grid-template-columns: 1fr;
       gap: var(--sp-1);
     }
+  }
+  @media (max-width: 420px) {
+    .hero__actions .btn { width: 100%; }
+    .hero__proof { max-width: none; }
+    .entry { padding-left: var(--sp-3); }
   }
 </style>

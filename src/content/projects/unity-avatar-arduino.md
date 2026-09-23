@@ -4,7 +4,7 @@ summary: A gesture-controlled 3D avatar driven by real-time IMU and flex-sensor 
 context: RWTH Aachen
 tags: [Arduino, ESP32, Unity 3D, C++, C#, IMU]
 links: []
-order: 2
+order: 1
 ---
 
 ## Overview

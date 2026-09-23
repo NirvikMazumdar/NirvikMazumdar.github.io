@@ -36,15 +36,16 @@
   --text-3: #8d8d8d;
   --border: #e0e0e0;
   --border-strong: #8d8d8d;
-  /* Neon green. Light mode uses a deeper green so text stays readable on white. */
-  --accent: #00a844;
-  --accent-hover: #008c38;
-  --accent-2: #39ff14; /* neon */
-  --accent-3: #00d4a4; /* mint */
-  --accent-tint: #e8ffe6;
+  /* IBM Carbon blue: familiar for enterprise, engineering and research audiences.
+     not as a fill colour for large areas or every tag. */
+  --accent: #0f62fe;
+  --accent-hover: #0043ce;
+  --accent-2: #4589ff;
+  --accent-3: #8a3ffc;
+  --accent-tint: #edf5ff;
   --on-accent: #ffffff;
   --nav-bg: rgba(255, 255, 255, 0.72);
-  --shadow: 0 12px 32px rgba(57, 255, 20, 0.2);
+  --shadow: 0 12px 28px rgba(22, 22, 22, 0.1);
 }
 
 [data-theme='dark'] {
@@ -57,14 +58,14 @@
   --text-3: #8d8d8d;
   --border: #393939;
   --border-strong: #6f6f6f;
-  --accent: #39ff14; /* neon */
-  --accent-hover: #7dff5e;
-  --accent-2: #b6ff6a;
-  --accent-3: #00ffc8;
-  --accent-tint: #12301a;
-  --on-accent: #0b1a0e;
+  --accent: #78a9ff;
+  --accent-hover: #a6c8ff;
+  --accent-2: #4589ff;
+  --accent-3: #be95ff;
+  --accent-tint: #1c2d4d;
+  --on-accent: #001141;
   --nav-bg: rgba(22, 22, 22, 0.72);
-  --shadow: 0 12px 32px rgba(57, 255, 20, 0.18);
+  --shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
 }
 
 /* ---------------------------------------------------------------------------
@@ -126,6 +127,14 @@ button {
   background: none;
   border: 0;
   padding: 0;
+  cursor: pointer;
+}
+
+/* Keep every interactive control recognisable as a control, not selectable text. */
+a,
+button,
+summary,
+[role='button'] {
   cursor: pointer;
 }
 
@@ -206,22 +215,20 @@ button {
   padding: 0.125rem 0.625rem;
   font-size: 0.75rem;
   line-height: 1.5;
-  color: var(--accent);
-  background: var(--accent-tint);
+  color: var(--text-2);
+  background: var(--bg-layer);
+  border: 1px solid var(--border);
   border-radius: 999px;
-  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+  transition: border-color var(--dur) var(--ease), color var(--dur) var(--ease);
 }
 .tag:hover {
-  background: var(--accent);
-  color: var(--on-accent);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
-/* Gradient headline (blue → purple → teal) */
+/* Calm Carbon headline: the accent is reserved for controls and wayfinding. */
 .gradient-text {
-  background: linear-gradient(90deg, var(--accent), var(--accent-2) 55%, var(--accent-3));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--text);
 }
 
 /* Scroll-in reveal: elements start hidden, .is-visible is added by Base.astro */

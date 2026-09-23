@@ -1,0 +1,32 @@
+---
+const username = 'NirvikMazumdar';
+const profileUrl = `https://github.com/${username}`;
+const chartUrl = `https://ghchart.xqsit94.in/light:0f62fe/${username}`;
+---
+
+<a class="activity" href={profileUrl} target="_blank" rel="noopener" aria-label={`Open ${username}'s GitHub profile`}>
+  <div class="activity__head">
+    <div>
+      <p class="mono">GitHub activity</p>
+      <h3>Live public contribution history</h3>
+    </div>
+    <span class="activity__link">Open GitHub ↗</span>
+  </div>
+  <img src={chartUrl} alt={`GitHub contribution graph for ${username}, refreshed by the chart provider`} loading="lazy" referrerpolicy="no-referrer" />
+</a>
+
+<style>
+  .activity {
+    display: block;
+    padding: var(--sp-4);
+    background: var(--bg-layer);
+    border-top: 3px solid var(--accent);
+    transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+  }
+  .activity:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+  .activity__head { display: flex; justify-content: space-between; gap: var(--sp-3); margin-bottom: var(--sp-5); }
+  .activity h3 { margin-top: var(--sp-2); font-size: 1.125rem; }
+  .activity__link { color: var(--accent); font-family: var(--font-mono); font-size: 0.75rem; white-space: nowrap; }
+  .activity img { width: 100%; height: auto; min-height: 7rem; object-fit: contain; object-position: left; }
+  @media (max-width: 640px) { .activity__head { flex-direction: column; gap: var(--sp-2); } .activity img { overflow-x: auto; } }
+</style>

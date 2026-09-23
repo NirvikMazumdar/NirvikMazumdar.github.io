@@ -7,16 +7,16 @@ export const profile = {
   location: 'Aachen, Germany',
   email: 'nirvik.mazumdar@rwth-aachen.de',
   photo: '/pic.png',
-  cv: '/Nirvik_CV.pdf',
+  cv: '/Nirvik_CV_Deutsch.pdf',
   links: [
     { label: 'GitHub', href: 'https://github.com/NirvikMazumdar' },
     { label: 'LinkedIn', href: 'https://linkedin.com/in/nirvikmazumdar' },
   ],
 
-  headline: 'Building learning systems that control real hardware.',
+  headline: 'Building intelligent systems for robotics, sensing and real-world infrastructure.',
 
   summary:
-    "Master's student in Robotic Systems Engineering at RWTH Aachen with a B.Tech in Electrical Engineering and hands-on experience in machine learning, firmware and control engineering. Skilled in model-based control design, real-time firmware and hardware-in-the-loop integration. Previously at ISEA (E.ON ERC), working on scalable, simulation-driven approaches to lowering EV charging costs using digital-twin principles. Looking for a role in a multidisciplinary, research-oriented environment.",
+    "Master's student in Robotic Systems Engineering at RWTH Aachen with a B.Tech in Electrical Engineering and hands-on experience in machine learning, firmware and control engineering. I build systems that connect sensing, embedded hardware and intelligent control—from IMU-driven prototypes to real-time data platforms. At ENVIOTECH, I develop EnvioTerminal’s backend, real-time ThingsBoard communication with sensor nodes and border routers, data-ingestion pipelines, and public APIs. Skilled in model-based control, real-time firmware and hardware-in-the-loop integration. Previously at ISEA (E.ON ERC), I developed scalable, simulation-driven approaches to lowering EV charging costs. Seeking a robotics, autonomy or intelligent-hardware role in a multidisciplinary, research-oriented team.",
 
   stack: [
     'Python', 'C++', 'SQL', 'TensorFlow', 'NumPy', 'Pandas', 'Matplotlib',
@@ -75,8 +75,9 @@ export const profile = {
     { group: 'Machine Learning & AI', items: ['Scikit-learn', 'TensorFlow', 'PyTorch', 'Hugging Face Transformers'] },
     { group: 'Deep Learning', items: ['CNNs', 'RNNs', 'Transformers'] },
     { group: 'Computer Vision', items: ['OpenCV (intro)'] },
-    { group: 'Frameworks & Tools', items: ['Docker', 'ROS', 'Jupyter', 'Git', 'SQL'] },
-    { group: 'Web & Deployment', items: ['Flask', 'AWS (intro)'] },
+    { group: 'Frameworks & Tools', items: ['Docker', 'Kubernetes', 'Grafana', 'Jupyter', 'Git', 'SQL', 'PostgreSQL'] },
+    { group: 'Robotics & Middleware', items: ['ROS', 'ROS 2 (learning)', 'NVIDIA Isaac ROS (learning)', 'ThingsBoard'] },
+    { group: 'Web & Deployment', items: ['Flask', 'REST APIs', 'AWS (intro)'] },
     { group: 'Hardware & Embedded', items: ['Arduino'] },
     { group: 'Concepts', items: ['LLM / LLMOps basics', 'Agentic AI systems', 'V2G (Vehicle-to-Grid)', 'Digital Twins'] },
   ],
@@ -96,6 +97,31 @@ export const profile = {
   interests: ['Reading (technology & business)', 'Puzzles and logic games'],
 };
 
+// Current CV update: technical detail aligned with Nirvik_CV_Deutsch.pdf.
+Object.assign(profile, {
+  summary: "Master’s student in Robotic Systems Engineering at RWTH Aachen with a B.Tech in Electrical Engineering and experience across machine learning, embedded systems, IoT and control engineering. I work on real-time firmware, sensor integration, radar systems, digital twins, and backend and data architectures. At ENVIOTECH, I develop EnvioTerminal’s backend and API/data/system architecture, EnvioChat, device and edge connectivity through ThingsBoard, MQTT and Thread, data-ingestion pipelines and REST APIs, and support 60 GHz FMCW radar telemetry and presence-detection systems. Previously at ISEA (E.ON ERC), I developed scalable, simulation-driven approaches to lowering EV charging costs. Seeking a technical, multidisciplinary and research-oriented role.",
+  stack: ['Python', 'C++', 'C', 'SQL', 'PyTorch', 'TensorFlow', 'Scikit-learn', 'NumPy', 'Pandas', 'OpenCV', 'Docker', 'Git', 'ROS', 'Fastify / Node.js', 'PostgreSQL', 'ThingsBoard', 'MQTT', 'Thread', 'Grafana', 'Linux / SSH', 'CNNs / RNNs / Transformers', 'Flask', 'MATLAB'],
+  experience: [{
+    ...profile.experience[0], period: 'May 2026 – present', location: 'Frankfurt, Germany · Hybrid',
+    bullets: ['Reworking and extending the backend of EnvioTerminal, the company’s central smart-infrastructure platform, including its API, data and system architecture.', 'Developing EnvioChat, an AI-powered assistant for intelligent interaction with platform, device and sensor data.', 'Integrating IoT devices, sensor nodes and border routers through ThingsBoard, MQTT and Thread, with real-time communication between backend and edge devices.', 'Designing data-ingestion pipelines, REST APIs and interfaces for internal sensor data and external data integration.', 'Working with 60 GHz FMCW radar sensor technology, telemetry and signal data; supporting the analysis, debugging and integration of radar and presence-detection systems.', 'Developing and operating containerised applications with Docker, PostgreSQL, Grafana and Linux, including deployment, monitoring and troubleshooting of distributed backend and IoT systems.'],
+    tools: ['Python', 'Fastify / Node.js', 'ThingsBoard', 'MQTT', 'Thread', 'Docker', 'PostgreSQL', 'Grafana', 'Linux / SSH'],
+  }, profile.experience[1]],
+  skills: [
+    { group: 'Programming', items: ['Python', 'C++', 'C', 'SQL'] },
+    { group: 'Machine Learning & AI', items: ['Scikit-learn', 'TensorFlow', 'PyTorch', 'Hugging Face Transformers', 'LLMs / LLMOps (basics)', 'Agentic AI systems (basics)'] },
+    { group: 'Deep Learning & Computer Vision', items: ['CNNs', 'RNNs', 'Transformers', 'OpenCV'] },
+    { group: 'Backend & APIs', items: ['Fastify / Node.js', 'REST APIs', 'Data-ingestion pipelines', 'Real-time communication', 'API integration'] },
+    { group: 'IoT & Data Platforms', items: ['ThingsBoard', 'MQTT', 'Sensor / telemetry data', 'Grafana', 'PostgreSQL'] },
+    { group: 'Embedded Systems & Firmware', items: ['Embedded C', 'Firmware flashing and debugging', 'Microcontrollers', 'Bootloader / OTA basics', 'Arduino'] },
+    { group: 'Radar & Sensing', items: ['60 GHz FMCW radar (Infineon BGT60TR13C)', 'Presence / motion detection', 'Signal and telemetry analysis'] },
+    { group: 'Communication & Protocols', items: ['Thread', 'MQTT', 'SPI', 'RS485', 'DALI / D4i'] },
+    { group: 'DevOps & Tools', items: ['Docker', 'Git', 'Jupyter', 'Kubernetes (basic)', 'Linux / SSH'] },
+    { group: 'Robotics', items: ['ROS', 'Sensor integration', 'Embedded / IoT systems', 'Digital twins'] },
+    { group: 'Web & Deployment', items: ['React', 'Vite', 'Docker-based deployments', 'Flask (basic)', 'AWS (basic)'] },
+    { group: 'Concepts', items: ['Vehicle-to-Grid (V2G)', 'Edge / IoT architectures', 'Real-time sensor communication'] },
+  ],
+});
+
 // Top navigation. Add entries here when you add new pages under src/pages/.
 export const nav = [
   { label: 'About', href: '/#about' },
@@ -105,3 +131,185 @@ export const nav = [
   { label: 'Skills', href: '/#skills' },
   { label: 'Contact', href: '/#contact' },
 ];
+
+export const locales = ['en', 'de', 'fr', 'nl'] as const;
+export type Locale = (typeof locales)[number];
+
+type Copy = {
+  tagline: string;
+  headline: string;
+  summary: string;
+  labels: Record<'downloadCv' | 'primaryStack' | 'about' | 'experience' | 'projects' | 'education' | 'skills' | 'more' | 'languages' | 'achievements' | 'interests' | 'contact', string>;
+  focus: { label: string; text: string }[];
+  highlights: { value: string; label: string }[];
+  explore: string;
+  footerHeadline: string;
+  present: string;
+};
+
+export const copy: Record<Locale, Copy> = {
+  en: {
+    tagline: profile.tagline,
+    headline: profile.headline,
+    summary: profile.summary,
+    labels: { downloadCv: 'Download CV', primaryStack: 'Primary tech stack', about: 'About', experience: 'Experience', projects: 'Projects', education: 'Education', skills: 'Skills', more: 'More', languages: 'Languages', achievements: 'Achievements & volunteering', interests: 'Interests', contact: 'Contact' },
+    focus: [
+      { label: 'Embodied systems', text: 'IMU sensing, firmware and real-time hardware integration.' },
+      { label: 'Control & learning', text: 'Model-based control, simulation and machine-learning evaluation.' },
+      { label: 'From prototype to platform', text: 'Hands-on systems work across hardware, data and APIs.' },
+    ],
+    highlights: [{ value: 'ROS + C++', label: 'robotics software foundation' }, { value: 'IMU + firmware', label: 'embedded sensing prototypes' }, { value: 'ML control', label: 'learning and optimisation systems' }],
+    explore: 'View selected work',
+    footerHeadline: 'Let’s build something useful.',
+    present: 'present',
+  },
+  de: {
+    tagline: 'Robotiksysteme · Maschinelles Lernen · KI-gestützte Regelung',
+    headline: 'Intelligente Robotiksysteme für reale Hardware entwickeln.',
+    summary: 'Masterstudent der Robotiksystemtechnik an der RWTH Aachen mit Bachelorabschluss in Elektrotechnik und praktischer Erfahrung in Machine Learning, Firmware und Regelungstechnik. Ich entwickle Systeme, die Sensorik, Embedded Hardware und intelligente Regelung verbinden – von IMU-basierten Prototypen bis zu Echtzeit-Datenplattformen. Bei ENVIOTECH entwickle ich das Backend von EnvioTerminal, Echtzeitkommunikation über ThingsBoard mit Sensorknoten und Border Routern sowie Datenpipelines und öffentliche APIs. Erfahren in modellbasierter Regelung, Echtzeit-Firmware und Hardware-in-the-Loop-Integration. Zuvor am ISEA (E.ON ERC): Entwicklung skalierbarer, simulationsgestützter Ansätze zur Senkung von EV-Ladekosten. Interesse an einer Position in Robotik, Autonomie oder intelligenter Hardware in einem interdisziplinären, forschungsnahen Team.',
+    labels: { downloadCv: 'Lebenslauf herunterladen', primaryStack: 'Technischer Schwerpunkt', about: 'Profil', experience: 'Berufserfahrung', projects: 'Projekte', education: 'Ausbildung', skills: 'Kompetenzen', more: 'Weitere Informationen', languages: 'Sprachen', achievements: 'Auszeichnungen & Engagement', interests: 'Interessen', contact: 'Kontakt' },
+    focus: [
+      { label: 'Verkörperte Systeme', text: 'IMU-Sensorik, Firmware und Echtzeit-Hardwareintegration.' },
+      { label: 'Regelung & Lernen', text: 'Modellbasierte Regelung, Simulation und ML-Evaluation.' },
+      { label: 'Prototyp bis Plattform', text: 'Hands-on-Systemarbeit über Hardware, Daten und APIs hinweg.' },
+    ],
+    highlights: [{ value: 'ROS + C++', label: 'Robotik-Softwarebasis' }, { value: 'IMU + Firmware', label: 'Embedded-Sensorikprototypen' }, { value: 'ML-Regelung', label: 'Lern- und Optimierungssysteme' }],
+    explore: 'Ausgewählte Arbeiten ansehen',
+    footerHeadline: 'Lassen Sie uns etwas Nützliches entwickeln.',
+    present: 'heute',
+  },
+  fr: {
+    tagline: 'Systèmes robotiques · Apprentissage automatique · Commande assistée par IA',
+    headline: 'Concevoir des systèmes robotiques intelligents pour du matériel réel.',
+    summary: 'Étudiant en master de systèmes robotiques à la RWTH Aachen, titulaire d’une licence en génie électrique, avec une expérience pratique en apprentissage automatique, firmware et commande. Je construis des systèmes qui relient capteurs, matériel embarqué et commande intelligente, des prototypes pilotés par IMU aux plateformes de données temps réel. Chez ENVIOTECH, je développe le backend d’EnvioTerminal, des communications ThingsBoard temps réel avec des nœuds capteurs et routeurs frontières, ainsi que des pipelines de données et des API publiques. Compétent en commande basée sur des modèles, firmware temps réel et intégration hardware-in-the-loop. Ancien assistant de recherche à l’ISEA (E.ON ERC), où il a développé des approches évolutives et guidées par simulation pour réduire les coûts de recharge des véhicules électriques. Recherche un poste en robotique, autonomie ou matériel intelligent dans une équipe interdisciplinaire et orientée recherche.',
+    labels: { downloadCv: 'Télécharger le CV', primaryStack: 'Technologies principales', about: 'Profil', experience: 'Expérience', projects: 'Projets', education: 'Formation', skills: 'Compétences', more: 'En savoir plus', languages: 'Langues', achievements: 'Réalisations & bénévolat', interests: 'Centres d’intérêt', contact: 'Contact' },
+    focus: [
+      { label: 'Systèmes incarnés', text: 'Capteurs IMU, firmware et intégration matérielle temps réel.' },
+      { label: 'Commande & apprentissage', text: 'Commande basée sur modèles, simulation et évaluation ML.' },
+      { label: 'Du prototype à la plateforme', text: 'Travail système concret entre matériel, données et API.' },
+    ],
+    highlights: [{ value: 'ROS + C++', label: 'base logicielle robotique' }, { value: 'IMU + firmware', label: 'prototypes de capteurs embarqués' }, { value: 'Commande ML', label: 'systèmes d’apprentissage et d’optimisation' }],
+    explore: 'Voir une sélection de réalisations',
+    footerHeadline: 'Construisons quelque chose d’utile.',
+    present: 'aujourd’hui',
+  },
+  nl: {
+    tagline: 'Robotische systemen · Machine learning · AI-gestuurde regeltechniek',
+    headline: 'Intelligente robotische systemen bouwen voor echte hardware.',
+    summary: 'Masterstudent Robotische Systeemtechniek aan de RWTH Aachen met een bachelor Elektrotechniek en praktijkervaring in machine learning, firmware en regeltechniek. Ik bouw systemen die sensoren, embedded hardware en intelligente regeltechniek verbinden: van IMU-gestuurde prototypes tot realtime dataplatforms. Bij ENVIOTECH ontwikkel ik de backend van EnvioTerminal, realtime ThingsBoard-communicatie met sensorknopen en border routers, plus data-ingestiepijplijnen en publieke API’s. Ervaren met modelgebaseerde regeltechniek, realtime firmware en hardware-in-the-loop-integratie. Werkte eerder bij ISEA (E.ON ERC) aan schaalbare, simulatiegedreven methoden om laadkosten voor elektrische voertuigen te verlagen. Zoekt een functie in robotica, autonomie of intelligente hardware in een multidisciplinair, onderzoeksgericht team.',
+    labels: { downloadCv: 'CV downloaden', primaryStack: 'Belangrijkste technologieën', about: 'Profiel', experience: 'Ervaring', projects: 'Projecten', education: 'Opleiding', skills: 'Vaardigheden', more: 'Meer', languages: 'Talen', achievements: 'Prestaties & vrijwilligerswerk', interests: 'Interesses', contact: 'Contact' },
+    focus: [
+      { label: 'Belichaamde systemen', text: 'IMU-sensoren, firmware en realtime hardwareintegratie.' },
+      { label: 'Regeltechniek & leren', text: 'Modelgebaseerde regeltechniek, simulatie en ML-evaluatie.' },
+      { label: 'Van prototype tot platform', text: 'Praktisch systeemwerk over hardware, data en API’s.' },
+    ],
+    highlights: [{ value: 'ROS + C++', label: 'robotica-softwarebasis' }, { value: 'IMU + firmware', label: 'embedded sensorprototypes' }, { value: 'ML-regeltechniek', label: 'leer- en optimalisatiesystemen' }],
+    explore: 'Bekijk geselecteerd werk',
+    footerHeadline: 'Laten we iets nuttigs bouwen.',
+    present: 'heden',
+  },
+};
+
+Object.assign(copy.en, {
+  focus: [{ label: 'Radar & sensing', text: '60 GHz FMCW radar, sensor integration and telemetry analysis.' }, { label: 'IoT & connectivity', text: 'ThingsBoard, MQTT, Thread and real-time edge communication.' }, { label: 'Platforms & control', text: 'Backend, data platforms and intelligent control for real systems.' }],
+  highlights: [{ value: '60 GHz radar', label: 'sensing and telemetry systems' }, { value: 'MQTT + Thread', label: 'real-time device connectivity' }, { value: 'Fastify + SQL', label: 'backend and data platforms' }],
+});
+Object.assign(copy.de, {
+  headline: 'Intelligente Systeme für Robotik, Sensorik und reale Infrastruktur entwickeln.',
+  summary: 'Masterstudent der Robotik an der RWTH Aachen mit B.Tech in Elektrotechnik und Erfahrung in Machine Learning, Embedded Systems, IoT und Regelungstechnik. Praxis in Echtzeit-Firmware, Sensorintegration, Radarsystemen, Digital Twins sowie Backend- und Datenarchitekturen. Bei ENVIOTECH entwickle ich das Backend sowie die API-, Daten- und Systemarchitektur von EnvioTerminal, EnvioChat, Geräte- und Edge-Konnektivität über ThingsBoard, MQTT und Thread, Daten-Ingestion-Pipelines und REST APIs; zudem unterstütze ich 60-GHz-FMCW-Radar-, Telemetrie- und Presence-Detection-Systeme. Zuvor entwickelte ich am ISEA (E.ON ERC) skalierbare, simulationsgestützte Ansätze zur Senkung von EV-Ladekosten. Auf der Suche nach einer Position in einem technischen, multidisziplinären und forschungsnahen Umfeld.',
+  focus: [{ label: 'Radar & Sensorik', text: '60-GHz-FMCW-Radar, Sensorintegration und Telemetrieanalyse.' }, { label: 'IoT & Konnektivität', text: 'ThingsBoard, MQTT, Thread und Echtzeitkommunikation am Edge.' }, { label: 'Plattformen & Regelung', text: 'Backend, Datenplattformen und intelligente Regelung für reale Systeme.' }],
+  highlights: [{ value: '60-GHz-Radar', label: 'Sensorik- und Telemetriesysteme' }, { value: 'MQTT + Thread', label: 'Echtzeit-Gerätekonnektivität' }, { value: 'Fastify + SQL', label: 'Backend und Datenplattformen' }],
+});
+Object.assign(copy.fr, {
+  headline: 'Concevoir des systèmes intelligents pour la robotique, les capteurs et les infrastructures réelles.',
+  summary: 'Étudiant en master de systèmes robotiques à la RWTH Aachen, titulaire d’un B.Tech en génie électrique, avec une expérience en apprentissage automatique, systèmes embarqués, IoT et commande. Je travaille sur le firmware temps réel, l’intégration de capteurs, les systèmes radar, les jumeaux numériques ainsi que les architectures backend et de données. Chez ENVIOTECH, je développe le backend et l’architecture API, données et systèmes d’EnvioTerminal, EnvioChat, la connectivité des appareils et de l’edge via ThingsBoard, MQTT et Thread, les pipelines d’ingestion et les API REST; je contribue aussi aux systèmes radar FMCW 60 GHz, de télémétrie et de détection de présence. Je recherche un poste technique, multidisciplinaire et orienté recherche.',
+  focus: [{ label: 'Radar & capteurs', text: 'Radar FMCW 60 GHz, intégration de capteurs et analyse de télémétrie.' }, { label: 'IoT & connectivité', text: 'ThingsBoard, MQTT, Thread et communication edge en temps réel.' }, { label: 'Plateformes & commande', text: 'Backend, plateformes de données et commande intelligente pour des systèmes réels.' }],
+  highlights: [{ value: 'Radar 60 GHz', label: 'systèmes de capteurs et télémétrie' }, { value: 'MQTT + Thread', label: 'connectivité d’appareils en temps réel' }, { value: 'Fastify + SQL', label: 'backend et plateformes de données' }],
+});
+Object.assign(copy.nl, {
+  headline: 'Intelligente systemen bouwen voor robotica, sensoren en echte infrastructuur.',
+  summary: 'Masterstudent Robotische Systeemtechniek aan de RWTH Aachen met een B.Tech Elektrotechniek en ervaring in machine learning, embedded systemen, IoT en regeltechniek. Ik werk aan realtime firmware, sensorintegratie, radarsystemen, digital twins en backend- en data-architecturen. Bij ENVIOTECH ontwikkel ik de backend en API-, data- en systeemarchitectuur van EnvioTerminal, EnvioChat, apparaat- en edge-connectiviteit via ThingsBoard, MQTT en Thread, data-ingestiepijplijnen en REST API’s; daarnaast ondersteun ik 60-GHz-FMCW-radar-, telemetrie- en aanwezigheidsdetectiesystemen. Ik zoek een technische, multidisciplinaire en onderzoeksgerichte functie.',
+  focus: [{ label: 'Radar & sensoren', text: '60-GHz-FMCW-radar, sensorintegratie en telemetrieanalyse.' }, { label: 'IoT & connectiviteit', text: 'ThingsBoard, MQTT, Thread en realtime edge-communicatie.' }, { label: 'Platformen & regeltechniek', text: 'Backend, dataplatformen en intelligente regeltechniek voor echte systemen.' }],
+  highlights: [{ value: '60-GHz-radar', label: 'sensor- en telemetriesystemen' }, { value: 'MQTT + Thread', label: 'realtime apparaatconnectiviteit' }, { value: 'Fastify + SQL', label: 'backend en dataplatformen' }],
+});
+
+export function localePath(locale: Locale, path = '/') {
+  return locale === 'en' ? path : `/${locale}${path === '/' ? '' : path}`;
+}
+
+const projectSkills = new Set(['Python', 'C++', 'TensorFlow', 'Scikit-learn', 'Arduino', 'IMU', 'Embedded', 'C#', 'ESP32', 'Unity 3D']);
+
+export function getSkillHref(skill: string) {
+  return projectSkills.has(skill) ? '#projects' : '#experience';
+}
+
+const localizedProfiles = {
+  de: {
+    experience: [
+      { role: 'Entwickler für Machine Learning & Smart Infrastructure', period: 'Mai 2026 – heute', location: 'Frankfurt, Deutschland · Hybrid', bullets: ['Überarbeitung des Backends von EnvioTerminal, der Kernplattform des Unternehmens.', 'Entwicklung intelligenter Funktionen wie EnvioChat, einem KI-Assistenten auf der Plattform.', 'Aufbau der Echtzeitkommunikation zwischen Backend, Sensorknoten und Border Routern über ThingsBoard.', 'Konzeption von Datenpipelines und öffentlichen APIs für externe Datenquellen.'] },
+      { role: 'Wissenschaftlicher Mitarbeiter (HiWi)', period: 'Apr. 2024 – Dez. 2025', location: 'Aachen, Deutschland', bullets: ['Forschung am E.ON Energy Research Center (E.ON ERC) zu Optimierung des EV-Ladens und Regelalgorithmen.', 'Automatisierung einer skalierbaren Pipeline für mehr als 1.000 deutsche Ladedatensätze.', 'Entwicklung und Bewertung eines Regelungsprototyps, der die geschätzten Ladekosten in der Simulation um 18 % senkt.', 'Arbeit an einer Forschungsarbeit zu einem Reinforcement-Learning-Modell für dynamische Ladeoptimierung mit synthetischen und historischen Daten.'] },
+    ],
+    education: [
+      { degree: 'M.Sc. Robotiksystemtechnik', period: 'Okt. 2023 – heute', notes: [] },
+      { degree: 'B.Tech Elektrotechnik', period: '2018 – 2022', notes: ['Abschlussarbeit: Vergleichende Leistungsanalyse eines künstlichen neuronalen Netzes mit Bayes-Regularisierung und des konventionellen P&O-Algorithmus in einem MPPT-Regler für PV-Systeme.', 'Abschlussnote: 1,7 (deutsche Skala) · CGPA 8,52'] },
+    ],
+    skillGroups: ['Programmierung', 'Machine Learning & KI', 'Deep Learning', 'Computer Vision', 'Frameworks & Tools', 'Web & Deployment', 'Hardware & Embedded', 'Konzepte'],
+    languages: [{ name: 'Englisch', level: 'Fließend' }, { name: 'Hindi', level: 'Fließend' }, { name: 'Bengali', level: 'Fließend' }, { name: 'Deutsch', level: 'A2 · in Ausbildung' }],
+    achievements: ['Gewinner – IEM Smart Maker Faire (2019)', 'Mitgründer – Calcutta Care Club: Sauerstoffversorgung während COVID, heute Unterstützung benachteiligter Kinder.'],
+    interests: ['Lesen (Technologie & Wirtschaft)', 'Rätsel und Logikspiele'],
+  },
+  fr: {
+    experience: [
+      { role: 'Développeur Machine Learning & Infrastructure intelligente', period: 'mai 2026 – aujourd’hui', location: 'Francfort, Allemagne · Hybride', bullets: ['Refonte du backend d’EnvioTerminal, la plateforme centrale de l’entreprise.', 'Développement de fonctionnalités intelligentes telles qu’EnvioChat, assistant IA intégré à la plateforme.', 'Mise en place de communications backend temps réel avec les nœuds capteurs et routeurs frontières via ThingsBoard.', 'Conception de pipelines d’ingestion de données et d’API publiques pour des sources externes.'] },
+      { role: 'Assistant de recherche (HiWi)', period: 'avr. 2024 – déc. 2025', location: 'Aachen, Allemagne', bullets: ['Recherche au E.ON Energy Research Center sur l’optimisation de la recharge des VE et les algorithmes de commande.', 'Automatisation d’un pipeline évolutif traitant plus de 1 000 jeux de données de recharge allemands.', 'Développement et évaluation d’un prototype de commande réduisant les coûts de recharge estimés de 18 % en simulation.', 'Travail sur un article consacré à un modèle d’apprentissage par renforcement pour optimiser dynamiquement les coûts de recharge.'] },
+    ],
+    education: [
+      { degree: 'M.Sc. Systèmes robotiques', period: 'oct. 2023 – aujourd’hui', notes: [] },
+      { degree: 'B.Tech Génie électrique', period: '2018 – 2022', notes: ['Mémoire : analyse comparative des performances d’un réseau neuronal artificiel à régularisation bayésienne et de l’algorithme P&O conventionnel dans un contrôleur MPPT photovoltaïque.', 'Note finale : 1,7 (échelle allemande) · CGPA 8,52'] },
+    ],
+    skillGroups: ['Programmation', 'Machine Learning & IA', 'Deep Learning', 'Vision par ordinateur', 'Frameworks & outils', 'Web & déploiement', 'Matériel & embarqué', 'Concepts'],
+    languages: [{ name: 'Anglais', level: 'Courant' }, { name: 'Hindi', level: 'Courant' }, { name: 'Bengali', level: 'Courant' }, { name: 'Allemand', level: 'A2 · en apprentissage' }],
+    achievements: ['Lauréat – IEM Smart Maker Faire (2019)', 'Cofondateur – Calcutta Care Club : fourniture d’oxygène pendant la COVID, soutien actuel aux enfants défavorisés.'],
+    interests: ['Lecture (technologie & business)', 'Énigmes et jeux de logique'],
+  },
+  nl: {
+    experience: [
+      { role: 'Developer Machine Learning & Slimme Infrastructuur', period: 'mei 2026 – heden', location: 'Frankfurt, Duitsland · Hybride', bullets: ['Vernieuwing van de backend van EnvioTerminal, het kernplatform van het bedrijf.', 'Ontwikkeling van slimme functies zoals EnvioChat, een AI-assistent op het platform.', 'Realiseren van realtime backendcommunicatie met sensorknopen en border routers via ThingsBoard.', 'Ontwerp van data-ingestiepijplijnen en publieke API’s voor externe databronnen.'] },
+      { role: 'Onderzoeksassistent (HiWi)', period: 'apr. 2024 – dec. 2025', location: 'Aken, Duitsland', bullets: ['Onderzoek bij het E.ON Energy Research Center naar optimalisatie van EV-laden en regelalgoritmen.', 'Automatisering van een schaalbare datapijplijn voor meer dan 1.000 Duitse laad-datasets.', 'Ontwikkeling en evaluatie van een regelprototype dat geschatte laadkosten in simulatie met 18 % verlaagt.', 'Werk aan een onderzoekspaper over een reinforcement-learningmodel voor dynamische optimalisatie van laadkosten.'] },
+    ],
+    education: [
+      { degree: 'M.Sc. Robotische Systeemtechniek', period: 'okt. 2023 – heden', notes: [] },
+      { degree: 'B.Tech Elektrotechniek', period: '2018 – 2022', notes: ['Scriptie: vergelijkende prestatieanalyse van een neuraal netwerk met Bayesiaanse regularisatie en het conventionele P&O-algoritme in een MPPT-regelaar voor zonnepanelen.', 'Eindcijfer: 1,7 (Duitse schaal) · CGPA 8,52'] },
+    ],
+    skillGroups: ['Programmeren', 'Machine Learning & AI', 'Deep Learning', 'Computer Vision', 'Frameworks & tools', 'Web & deployment', 'Hardware & embedded', 'Concepten'],
+    languages: [{ name: 'Engels', level: 'Vloeiend' }, { name: 'Hindi', level: 'Vloeiend' }, { name: 'Bengaals', level: 'Vloeiend' }, { name: 'Duits', level: 'A2 · lerend' }],
+    achievements: ['Winnaar – IEM Smart Maker Faire (2019)', 'Medeoprichter – Calcutta Care Club: zuurstofvoorziening tijdens COVID, nu steun voor kansarme kinderen.'],
+    interests: ['Lezen (technologie & business)', 'Puzzels en logicaspellen'],
+  },
+} as const;
+
+const localizedCvUpdate = {
+  de: { role: 'Entwickler für Machine Learning & Smart Infrastructure', period: 'Mai 2026 – heute', location: 'Frankfurt, Deutschland · Hybrid', bullets: ['Umfassende Überarbeitung und Erweiterung des Backends von EnvioTerminal, der zentralen Smart-Infrastructure-Plattform des Unternehmens, einschließlich API-, Daten- und Systemarchitektur.', 'Entwicklung von EnvioChat, einem KI-gestützten Assistenten für die intelligente Interaktion mit Plattform-, Geräte- und Sensordaten.', 'Integration von IoT-Geräten, Sensorknoten und Border Routern über ThingsBoard, MQTT und Thread sowie Umsetzung von Echtzeitkommunikation zwischen Backend und Edge-Geräten.', 'Konzeption von Daten-Ingestion-Pipelines, REST APIs und Schnittstellen für interne Sensordaten sowie zur Integration externer Datenquellen.', 'Arbeit mit 60-GHz-FMCW-Radarsensorik, Telemetrie- und Signaldaten sowie Unterstützung bei Analyse, Debugging und Integration von Radar- und Presence-Detection-Systemen.', 'Entwicklung und Betrieb containerisierter Anwendungen mit Docker, PostgreSQL, Grafana und Linux, einschließlich Deployment, Monitoring und Fehleranalyse verteilter Backend- und IoT-Systeme.'] },
+  fr: { role: 'Développeur Machine Learning & Infrastructure intelligente', period: 'mai 2026 – aujourd’hui', location: 'Francfort, Allemagne · Hybride', bullets: ['Refonte et extension approfondies du backend d’EnvioTerminal, y compris son architecture d’API, de données et de systèmes.', 'Développement d’EnvioChat, un assistant alimenté par l’IA pour interagir avec les données de plateforme, d’appareils et de capteurs.', 'Intégration d’appareils IoT, de nœuds capteurs et de routeurs frontaliers via ThingsBoard, MQTT et Thread, avec une communication temps réel entre backend et appareils edge.', 'Conception de pipelines d’ingestion, d’API REST et d’interfaces pour les données de capteurs internes et l’intégration de données externes.', 'Travail avec des capteurs radar FMCW 60 GHz et des données de télémétrie et de signal; contribution à l’analyse, au débogage et à l’intégration de systèmes radar et de détection de présence.', 'Développement et exploitation d’applications conteneurisées avec Docker, PostgreSQL, Grafana et Linux, y compris déploiement, supervision et dépannage.'] },
+  nl: { role: 'Developer Machine Learning & Slimme Infrastructuur', period: 'mei 2026 – heden', location: 'Frankfurt, Duitsland · Hybride', bullets: ['Grondige herwerking en uitbreiding van de backend van EnvioTerminal, inclusief API-, data- en systeemarchitectuur.', 'Ontwikkeling van EnvioChat, een AI-gestuurde assistent voor intelligente interactie met platform-, apparaat- en sensordata.', 'Integratie van IoT-apparaten, sensorknopen en border routers via ThingsBoard, MQTT en Thread, met realtime communicatie tussen backend en edge-apparaten.', 'Ontwerp van data-ingestiepijplijnen, REST API’s en interfaces voor interne sensordata en externe dataintegratie.', 'Werken met 60-GHz-FMCW-radarsensoren en telemetrie- en signaaldata; ondersteuning bij analyse, debugging en integratie van radar- en aanwezigheidsdetectiesystemen.', 'Ontwikkeling en beheer van gecontaineriseerde toepassingen met Docker, PostgreSQL, Grafana en Linux, inclusief deployment, monitoring en probleemoplossing.'] },
+} as const;
+
+const localizedSkillGroups = {
+  de: ['Programmierung', 'Machine Learning & KI', 'Deep Learning & Computer Vision', 'Backend & APIs', 'IoT & Datenplattformen', 'Embedded Systems & Firmware', 'Radar & Sensorik', 'Kommunikation & Protokolle', 'DevOps & Tools', 'Robotik', 'Web & Deployment', 'Weitere Konzepte'],
+  fr: ['Programmation', 'Machine Learning & IA', 'Deep Learning & Vision par ordinateur', 'Backend & API', 'IoT & plateformes de données', 'Systèmes embarqués & firmware', 'Radar & capteurs', 'Communication & protocoles', 'DevOps & outils', 'Robotique', 'Web & déploiement', 'Concepts complémentaires'],
+  nl: ['Programmeren', 'Machine Learning & AI', 'Deep Learning & Computer Vision', 'Backend & API’s', 'IoT & dataplatformen', 'Embedded systemen & firmware', 'Radar & sensoren', 'Communicatie & protocollen', 'DevOps & tools', 'Robotica', 'Web & deployment', 'Overige concepten'],
+} as const;
+
+export function getProfile(locale: Locale) {
+  if (locale === 'en') return profile;
+  const translation = localizedProfiles[locale];
+  return {
+    ...profile,
+    experience: profile.experience.map((job, index) => ({ ...job, ...translation.experience[index], ...(index === 0 ? localizedCvUpdate[locale] : {}) })),
+    education: profile.education.map((education, index) => ({ ...education, ...translation.education[index] })),
+    skills: profile.skills.map((skill, index) => ({ ...skill, group: localizedSkillGroups[locale][index] })),
+    languages: translation.languages,
+    achievements: translation.achievements,
+    interests: translation.interests,
+  };
+}

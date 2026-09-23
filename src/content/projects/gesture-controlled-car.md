@@ -4,7 +4,7 @@ summary: An Arduino-based vehicle steered by hand gestures using accelerometer/I
 context: Personal
 tags: [Arduino, C++, IMU, Motor Drivers, Embedded]
 links: []
-order: 4
+order: 2
 ---
 
 ## Overview
