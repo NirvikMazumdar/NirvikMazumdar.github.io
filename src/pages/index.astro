@@ -70,8 +70,6 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
     </ul>
   </Section>
 
-  <div class="industrial-scene" aria-hidden="true"><span></span></div>
-
   <!-- Experience -->
   <Section id="experience" index="02" label="Experience">
     <ul class="timeline">
@@ -365,19 +363,6 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
   }
   .focus .mono { color: var(--accent); }
   .focus p:last-child { color: var(--text-2); font-size: 0.9375rem; }
-  .industrial-scene {
-    position: relative;
-    height: clamp(12rem, 24vw, 20rem);
-    margin-top: calc(var(--sp-7) * -0.25);
-    overflow: hidden;
-    background: #0b3d75 url('/industrial-robotics-factory.png') center 58% / cover no-repeat;
-    border-block: 1px solid var(--border);
-  }
-  .industrial-scene::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(15, 98, 254, .24), transparent 55%, rgba(0, 17, 65, .32)); }
-  .industrial-scene::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 36%, rgba(255, 255, 255, .3) 50%, transparent 64%); transform: translateX(-100%); animation: factory-scan 9s var(--ease) infinite; }
-  .industrial-scene span { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.14) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px); background-size: 4rem 4rem; opacity: .28; animation: factory-grid 22s linear infinite; }
-  @keyframes factory-scan { 0%, 35% { transform: translateX(-100%); } 55%, 100% { transform: translateX(100%); } }
-  @keyframes factory-grid { to { background-position: 4rem 4rem; } }
   .chips {
     display: flex;
     flex-wrap: wrap;
@@ -543,5 +528,4 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
     .hero__proof { max-width: none; }
     .entry { padding-left: var(--sp-3); }
   }
-  @media (prefers-reduced-motion: reduce) { .industrial-scene::after, .industrial-scene span { animation: none; } }
 </style>

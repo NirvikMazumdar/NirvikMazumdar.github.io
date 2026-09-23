@@ -60,6 +60,18 @@ const nav = [
     backdrop-filter: saturate(180%) blur(20px);
     border-bottom: 1px solid var(--border);
   }
+  .nav::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.3;
+    background: url('/industrial-robotics-factory.png') center 58% / cover no-repeat;
+    animation: header-factory-pan 28s ease-in-out infinite alternate;
+  }
+  .nav__inner { position: relative; z-index: 1; }
+  @keyframes header-factory-pan { from { background-position: 44% 58%; } to { background-position: 56% 58%; } }
   .nav__inner {
     display: flex;
     align-items: center;
@@ -180,4 +192,5 @@ const nav = [
       margin-left: 0;
     }
   }
+  @media (prefers-reduced-motion: reduce) { .nav::before { animation: none; } }
 </style>
