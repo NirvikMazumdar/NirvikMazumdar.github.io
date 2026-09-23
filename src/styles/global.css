@@ -288,31 +288,6 @@ summary,
   font-weight: 800;
 }
 
-.entry__title {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-2);
-}
-.entry__role-icon {
-  display: inline-grid;
-  place-items: center;
-  flex: none;
-  width: 1.75rem;
-  height: 1.75rem;
-  color: var(--accent);
-  background: var(--accent-tint);
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  font-weight: 800;
-}
-.entry__role-icon--education {
-  color: var(--accent-2);
-  background: color-mix(in srgb, var(--accent-2) 13%, transparent);
-}
-.entry__role-icon svg {
-  width: 1rem;
-  height: 1rem;
-}
 .entry__org {
   color: var(--text);
   font-weight: 800;

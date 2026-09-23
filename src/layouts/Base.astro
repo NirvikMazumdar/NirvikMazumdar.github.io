@@ -91,29 +91,7 @@ const pageTitle = title ? `${title} · ${profile.name}` : `${profile.name} — $
         });
       });
 
-      const roleMonograms = ['E', 'F', 'I'];
-      document.querySelectorAll<HTMLElement>('#experience .entry__head h3').forEach((title, index) => {
-        const icon = document.createElement('span');
-        icon.className = 'entry__role-icon';
-        icon.setAttribute('aria-hidden', 'true');
-        icon.textContent = roleMonograms[index] || 'E';
-        const row = document.createElement('div');
-        row.className = 'entry__title';
-        title.before(row);
-        row.append(icon, title);
-      });
       document.querySelectorAll<HTMLElement>('#experience .entry__head .muted').forEach((org) => org.classList.add('entry__org'));
-      const educationMonograms = ['R', 'I'];
-      document.querySelectorAll<HTMLElement>('#education .entry__head h3').forEach((title, index) => {
-        const icon = document.createElement('span');
-        icon.className = 'entry__role-icon entry__role-icon--education';
-        icon.setAttribute('aria-hidden', 'true');
-        icon.textContent = educationMonograms[index] || 'E';
-        const row = document.createElement('div');
-        row.className = 'entry__title';
-        title.before(row);
-        row.append(icon, title);
-      });
 
       const featuredSkills = new Set(['Python', 'C++', 'ROS', 'Fastify / Node.js', 'PostgreSQL', 'ThingsBoard', 'MQTT', 'Thread', 'Grafana', 'Docker']);
       document.querySelectorAll<HTMLElement>('.tag').forEach((tag) => {
