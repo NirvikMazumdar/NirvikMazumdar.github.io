@@ -352,6 +352,11 @@ summary,
   border-radius: 50%;
   background: #42be65;
   box-shadow: 0 0 .35rem #42be65, 0 0 .9rem rgba(66, 190, 101, .9);
+  animation: availability-pulse 2.2s ease-in-out infinite;
+}
+@keyframes availability-pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 .35rem #42be65, 0 0 .9rem rgba(66, 190, 101, .9); }
+  50% { transform: scale(1.45); box-shadow: 0 0 .5rem #42be65, 0 0 1.25rem rgba(66, 190, 101, 1); }
 }
 
 /* Scroll-in reveal: elements start hidden, .is-visible is added by Base.astro */
