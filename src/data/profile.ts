@@ -199,7 +199,7 @@ export const copy: Record<Locale, Copy> = {
     footerHeadline: 'Let’s build something useful.',
     present: 'present',
     availability: 'Open to collaboration',
-    legalNotice: 'Personal, non-commercial portfolio. Copyright 2026 Nirvik Mazumdar. No advertising cookies or analytics. GitHub Pages and the optional GitHub chart may process technical access data.',
+    legalNotice: 'Personal, non-commercial portfolio designed around EU GDPR privacy principles. No advertising cookies or analytics. GitHub Pages and the optional GitHub chart may process technical access data.',
   },
   de: {
     tagline: 'Robotiksysteme · Maschinelles Lernen · KI-gestützte Regelung',
@@ -216,11 +216,11 @@ export const copy: Record<Locale, Copy> = {
     footerHeadline: 'Lassen Sie uns etwas Nützliches entwickeln.',
     present: 'heute',
     availability: 'Offen fuer Zusammenarbeit',
-    legalNotice: 'Persoenliche, nicht-kommerzielle Portfolio-Website. Copyright 2026 Nirvik Mazumdar. Keine Werbe-Cookies oder Analytics. GitHub Pages und das optionale GitHub-Diagramm koennen technische Zugriffsdaten verarbeiten.',
+    legalNotice: 'Persoenliche, nicht-kommerzielle Portfolio-Website mit Orientierung an EU-DSGVO-Datenschutzgrundsaetzen. Keine Werbe-Cookies oder Analytics. GitHub Pages und das optionale GitHub-Diagramm koennen technische Zugriffsdaten verarbeiten.',
   },
   fr: {
     availability: 'Ouvert a la collaboration',
-    legalNotice: 'Portfolio personnel non commercial. Copyright 2026 Nirvik Mazumdar. Aucun cookie publicitaire ni analytics. GitHub Pages et le graphique GitHub optionnel peuvent traiter des donnees techniques d acces.',
+    legalNotice: 'Portfolio personnel non commercial concu selon les principes europeens de confidentialite du RGPD. Aucun cookie publicitaire ni analytics. GitHub Pages et le graphique GitHub optionnel peuvent traiter des donnees techniques d acces.',
     tagline: 'Systèmes robotiques · Apprentissage automatique · Commande assistée par IA',
     headline: 'Concevoir des systèmes robotiques intelligents pour du matériel réel.',
     summary: 'Étudiant en master de systèmes robotiques à la RWTH Aachen, titulaire d’une licence en génie électrique, avec une expérience pratique en apprentissage automatique, firmware et commande. Je construis des systèmes qui relient capteurs, matériel embarqué et commande intelligente, des prototypes pilotés par IMU aux plateformes de données temps réel. Chez ENVIOTECH, je développe le backend d’EnvioTerminal, des communications ThingsBoard temps réel avec des nœuds capteurs et routeurs frontières, ainsi que des pipelines de données et des API publiques. Compétent en commande basée sur des modèles, firmware temps réel et intégration hardware-in-the-loop. Ancien assistant de recherche à l’ISEA (E.ON ERC), où il a développé des approches évolutives et guidées par simulation pour réduire les coûts de recharge des véhicules électriques. Recherche un poste en robotique, autonomie ou matériel intelligent dans une équipe interdisciplinaire et orientée recherche.',
@@ -250,7 +250,7 @@ export const copy: Record<Locale, Copy> = {
     footerHeadline: 'Laten we iets nuttigs bouwen.',
     present: 'heden',
     availability: 'Open voor samenwerking',
-    legalNotice: 'Persoonlijke, niet-commerciele portfolio-website. Copyright 2026 Nirvik Mazumdar. Geen advertentiecookies of analytics. GitHub Pages en de optionele GitHub-grafiek kunnen technische toegangsgegevens verwerken.',
+    legalNotice: 'Persoonlijke, niet-commerciele portfolio-website ontworpen volgens EU-AVG-privacyprincipes. Geen advertentiecookies of analytics. GitHub Pages en de optionele GitHub-grafiek kunnen technische toegangsgegevens verwerken.',
   },
 };
 

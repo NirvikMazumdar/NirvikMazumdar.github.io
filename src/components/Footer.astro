@@ -34,7 +34,7 @@ const year = new Date().getFullYear();
       <li><a class="link" href={profile.cv} target="_blank" rel="noopener">CV (PDF) ↗</a></li>
     </ul>
   </div>
-  <div class="container footer__meta">
+  <div class="container footer__meta" tabindex="0" aria-label="Show privacy information">
     <span class="mono">© {year} {profile.name}</span>
     <span class="mono">{profile.location}</span>
     <p class="footer__legal">{text.legalNotice}</p>
@@ -219,7 +219,11 @@ const year = new Date().getFullYear();
     color: rgba(208, 226, 255, 0.82);
     font-size: .6875rem;
     line-height: 1.55;
+    display: none;
   }
+  .footer__meta > .mono:first-child { cursor: help; }
+  .footer__meta:hover .footer__legal,
+  .footer__meta:focus .footer__legal { display: block; }
   @media (max-width: 640px) {
     .footer__inner {
       grid-template-columns: 1fr;

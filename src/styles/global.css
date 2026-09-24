@@ -335,6 +335,15 @@ summary,
   font-family: var(--font-mono);
   font-size: .6875rem;
   line-height: 1.25;
+  cursor: pointer;
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease), background var(--dur) var(--ease);
+}
+.hero__availability:hover,
+.hero__availability:focus-visible {
+  background: var(--accent-tint);
+  box-shadow: .5rem .5rem 0 var(--accent-2);
+  outline: none;
+  transform: translate(-.125rem, -.125rem);
 }
 .hero__availability span {
   width: .5rem;

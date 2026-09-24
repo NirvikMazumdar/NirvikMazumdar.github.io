@@ -102,6 +102,19 @@ const pageTitle = title ? `${title} · ${profile.name}` : `${profile.name} — $
         badge.append(document.createTextNode(availability));
         frame.append(badge);
       });
+      document.querySelectorAll<HTMLElement>('.hero__availability').forEach((badge) => {
+        const openContact = () => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+        badge.setAttribute('role', 'link');
+        badge.tabIndex = 0;
+        badge.setAttribute('aria-label', 'Open contact section');
+        badge.addEventListener('click', openContact);
+        badge.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            openContact();
+          }
+        });
+      });
 
       const featuredSkills = new Set(['Python', 'C++', 'ROS', 'Fastify / Node.js', 'PostgreSQL', 'ThingsBoard', 'MQTT', 'Thread', 'Grafana', 'Docker']);
       document.querySelectorAll<HTMLElement>('.tag').forEach((tag) => {
