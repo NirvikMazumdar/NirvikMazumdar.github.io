@@ -5,11 +5,12 @@ interface Props { locale?: Locale }
 const { locale = 'en' } = Astro.props;
 const username = 'NirvikMazumdar';
 const profileUrl = `https://github.com/${username}`;
+const chartUrl = `https://ghchart.xqsit94.in/light:0f62fe/${username}`;
 const text: Record<Locale, { eyebrow: string; title: string; description: string; action: string }> = {
-  en: { eyebrow: 'GitHub activity', title: 'Public work and contributions', description: 'View the current contribution history and public repositories directly on GitHub.', action: 'Open GitHub' },
-  de: { eyebrow: 'GitHub-Aktivitaet', title: 'Oeffentliche Arbeit und Beitraege', description: 'Aktuelle Beitragsverlaeufe und oeffentliche Repositories direkt auf GitHub ansehen.', action: 'GitHub oeffnen' },
-  fr: { eyebrow: 'Activite GitHub', title: 'Travaux et contributions publics', description: 'Consultez l historique actuel des contributions et les depots publics directement sur GitHub.', action: 'Ouvrir GitHub' },
-  nl: { eyebrow: 'GitHub-activiteit', title: 'Openbaar werk en bijdragen', description: 'Bekijk de actuele bijdragegeschiedenis en openbare repositories rechtstreeks op GitHub.', action: 'GitHub openen' },
+  en: { eyebrow: 'GitHub activity', title: 'Live public contribution history', description: 'Current public contributions, refreshed by the chart provider.', action: 'Open GitHub' },
+  de: { eyebrow: 'GitHub-Aktivitaet', title: 'Live-Verlauf oeffentlicher Beitraege', description: 'Aktuelle oeffentliche Beitraege, vom Diagramm-Anbieter aktualisiert.', action: 'GitHub oeffnen' },
+  fr: { eyebrow: 'Activite GitHub', title: 'Historique en direct des contributions publiques', description: 'Contributions publiques actuelles, actualisees par le fournisseur du graphique.', action: 'Ouvrir GitHub' },
+  nl: { eyebrow: 'GitHub-activiteit', title: 'Live geschiedenis van openbare bijdragen', description: 'Actuele openbare bijdragen, vernieuwd door de grafiekprovider.', action: 'GitHub openen' },
 };
 const copy = text[locale];
 ---
@@ -22,7 +23,7 @@ const copy = text[locale];
     </div>
     <span class="activity__link">Open GitHub ↗</span>
   </div>
-  <p class="activity__description muted">{copy.description}</p>
+  <img src={chartUrl} alt={`${copy.description} GitHub contribution graph for ${username}.`} loading="lazy" referrerpolicy="no-referrer" />
 </a>
 
 <style>
@@ -41,6 +42,6 @@ const copy = text[locale];
   .activity h3 { margin-top: var(--sp-2); font-size: 1.125rem; }
   .activity__link { padding: 0.5rem 0.75rem; color: var(--accent); background: var(--bg); border: 1px solid var(--accent); box-shadow: 3px 3px 0 var(--accent-2); font-family: var(--font-mono); font-size: 0.75rem; white-space: nowrap; transition: color var(--dur) var(--ease), background var(--dur) var(--ease), transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease); }
   .activity:hover .activity__link { color: var(--on-accent); background: var(--accent); box-shadow: 5px 5px 0 var(--accent-2); transform: translate(-2px, -2px); }
-  .activity__description { max-width: 42rem; margin: 0; }
-  @media (max-width: 640px) { .activity__head { flex-direction: column; gap: var(--sp-2); } }
+  .activity img { width: 100%; height: auto; min-height: 7rem; object-fit: contain; object-position: left; }
+  @media (max-width: 640px) { .activity__head { flex-direction: column; gap: var(--sp-2); } .activity img { overflow-x: auto; } }
 </style>
