@@ -37,6 +37,7 @@ const year = new Date().getFullYear();
   <div class="container footer__meta">
     <span class="mono">© {year} {profile.name}</span>
     <span class="mono">{profile.location}</span>
+    <p class="footer__legal">{text.legalNotice}</p>
   </div>
 </footer>
 
@@ -206,8 +207,18 @@ const year = new Date().getFullYear();
   }
   .footer__meta {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
+    gap: var(--sp-2) var(--sp-4);
     padding-block: var(--sp-4);
+  }
+  .footer__legal {
+    width: 100%;
+    max-width: 62rem;
+    margin: 0;
+    color: rgba(208, 226, 255, 0.82);
+    font-size: .6875rem;
+    line-height: 1.55;
   }
   @media (max-width: 640px) {
     .footer__inner {
