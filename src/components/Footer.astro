@@ -159,6 +159,9 @@ const year = new Date().getFullYear();
   }
   .footer__mail {
     margin-top: var(--sp-3);
+    min-width: 0;
+    width: fit-content;
+    max-width: 100%;
   }
   .footer .mono { color: #c6e4ff; }
   .footer .link { color: #d0e2ff; }
@@ -184,6 +187,12 @@ const year = new Date().getFullYear();
     letter-spacing: 0.02em;
     text-decoration: none;
     transition: transform var(--dur) var(--ease), background var(--dur) var(--ease), box-shadow var(--dur) var(--ease), color var(--dur) var(--ease);
+  }
+  .footer__action.footer__mail {
+    min-width: 0;
+    width: fit-content;
+    padding: 0.625rem 0.75rem;
+    font-size: 0.6875rem;
   }
   .footer__action:hover,
   .footer__action:focus-visible,
