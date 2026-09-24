@@ -38,7 +38,7 @@ const pageTitle = title ? `${title} · ${profile.name}` : `${profile.name} — $
   </head>
   <body>
     <Nav locale={locale} />
-    <main>
+    <main data-availability={text.availability}>
       <slot />
     </main>
     <Footer locale={locale} />
@@ -92,6 +92,16 @@ const pageTitle = title ? `${title} · ${profile.name}` : `${profile.name} — $
       });
 
       document.querySelectorAll<HTMLElement>('#experience .entry__head .muted').forEach((org) => org.classList.add('entry__org'));
+
+      const availability = document.querySelector('main')?.getAttribute('data-availability');
+      document.querySelectorAll<HTMLElement>('.hero__frame').forEach((frame) => {
+        if (!availability || frame.querySelector('.hero__availability')) return;
+        const badge = document.createElement('p');
+        badge.className = 'hero__availability';
+        badge.innerHTML = '<span aria-hidden="true"></span>';
+        badge.append(document.createTextNode(availability));
+        frame.append(badge);
+      });
 
       const featuredSkills = new Set(['Python', 'C++', 'ROS', 'Fastify / Node.js', 'PostgreSQL', 'ThingsBoard', 'MQTT', 'Thread', 'Grafana', 'Docker']);
       document.querySelectorAll<HTMLElement>('.tag').forEach((tag) => {

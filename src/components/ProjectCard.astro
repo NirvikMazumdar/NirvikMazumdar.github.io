@@ -1,13 +1,17 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { translatedProject } from '../data/project-localization';
+import type { Locale } from '../data/profile';
 interface Props {
   project: CollectionEntry<'projects'>;
+  locale?: Locale;
 }
-const { project } = Astro.props;
-const { title, summary, period, context, tags } = project.data;
+const { project, locale = 'en' } = Astro.props;
+const { title, summary, period, context, tags } = translatedProject(project, locale);
+const projectHref = locale === 'en' ? `/projects/${project.id}/` : `/${locale}/projects/${project.id}/`;
 ---
 
-<a class="card" href={`/projects/${project.id}/`}>
+<a class="card" href={projectHref}>
   <div class="card__meta mono">
     {context && <span>{context}</span>}
     {period && <span>{period}</span>}
@@ -40,7 +44,7 @@ const { title, summary, period, context, tags } = project.data;
   .card:hover {
     border-color: var(--accent);
     background: var(--accent-tint);
-    transform: translate(-3px, -3px);
+    transform: translate(-3px, -3px) scale(1.018);
     box-shadow: 7px 7px 0 var(--accent-2);
   }
   .card__meta {

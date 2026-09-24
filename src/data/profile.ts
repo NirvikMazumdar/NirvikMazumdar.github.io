@@ -179,6 +179,7 @@ type Copy = {
   explore: string;
   footerHeadline: string;
   present: string;
+  availability: string;
 };
 
 export const copy: Record<Locale, Copy> = {
@@ -196,6 +197,7 @@ export const copy: Record<Locale, Copy> = {
     explore: 'View selected work',
     footerHeadline: 'Let’s build something useful.',
     present: 'present',
+    availability: 'Open to collaboration',
   },
   de: {
     tagline: 'Robotiksysteme · Maschinelles Lernen · KI-gestützte Regelung',
@@ -211,8 +213,10 @@ export const copy: Record<Locale, Copy> = {
     explore: 'Ausgewählte Arbeiten ansehen',
     footerHeadline: 'Lassen Sie uns etwas Nützliches entwickeln.',
     present: 'heute',
+    availability: 'Offen fuer Zusammenarbeit',
   },
   fr: {
+    availability: 'Ouvert a la collaboration',
     tagline: 'Systèmes robotiques · Apprentissage automatique · Commande assistée par IA',
     headline: 'Concevoir des systèmes robotiques intelligents pour du matériel réel.',
     summary: 'Étudiant en master de systèmes robotiques à la RWTH Aachen, titulaire d’une licence en génie électrique, avec une expérience pratique en apprentissage automatique, firmware et commande. Je construis des systèmes qui relient capteurs, matériel embarqué et commande intelligente, des prototypes pilotés par IMU aux plateformes de données temps réel. Chez ENVIOTECH, je développe le backend d’EnvioTerminal, des communications ThingsBoard temps réel avec des nœuds capteurs et routeurs frontières, ainsi que des pipelines de données et des API publiques. Compétent en commande basée sur des modèles, firmware temps réel et intégration hardware-in-the-loop. Ancien assistant de recherche à l’ISEA (E.ON ERC), où il a développé des approches évolutives et guidées par simulation pour réduire les coûts de recharge des véhicules électriques. Recherche un poste en robotique, autonomie ou matériel intelligent dans une équipe interdisciplinaire et orientée recherche.',
@@ -241,6 +245,7 @@ export const copy: Record<Locale, Copy> = {
     explore: 'Bekijk geselecteerd werk',
     footerHeadline: 'Laten we iets nuttigs bouwen.',
     present: 'heden',
+    availability: 'Open voor samenwerking',
   },
 };
 

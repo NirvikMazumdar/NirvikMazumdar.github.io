@@ -99,7 +99,7 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
   <!-- Projects -->
   <Section id="projects" index="03" label="Projects">
     <div class="cards">
-      {projects.map((p) => <ProjectCard project={p} />)}
+      {projects.map((p) => <ProjectCard project={p} locale="en" />)}
     </div>
   </Section>
 
@@ -309,13 +309,13 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
     position: absolute;
     inset: 0;
     transform: translate(1rem, 1rem);
-    background: linear-gradient(135deg, #d9ffe2 0%, #a7f3b5 48%, #42be65 100%);
+    background: linear-gradient(to top right, #42be65 0%, #a7f3b5 55%, #d2ff68 100%);
     border-radius: var(--radius);
     z-index: -1;
     transition: transform 300ms var(--ease);
   }
   .hero__frame:hover::before {
-    transform: translate(0.5rem, 0.5rem);
+    transform: translate(1rem, 1rem);
   }
   .hero__photo {
     width: 100%;
@@ -324,6 +324,11 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
     object-fit: cover;
     object-position: center 72%;
     border-radius: var(--radius);
+    transform-origin: center;
+    transition: transform 300ms var(--ease);
+  }
+  .hero__frame:hover .hero__photo {
+    transform: scale(1.035);
   }
   .hero__availability {
     position: absolute;
@@ -348,8 +353,8 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
     width: 0.5rem;
     height: 0.5rem;
     border-radius: 50%;
-    background: #b7ffca;
-    box-shadow: 0 0 0.35rem #b7ffca, 0 0 0.9rem #42be65;
+    background: #42be65;
+    box-shadow: 0 0 0.35rem #42be65, 0 0 0.9rem rgba(66, 190, 101, 0.9);
   }
 
   /* About */

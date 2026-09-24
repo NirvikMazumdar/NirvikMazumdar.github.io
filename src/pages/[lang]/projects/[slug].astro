@@ -1,0 +1,50 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import { copy, locales } from '../../../data/profile';
+import type { Locale } from '../../../data/profile';
+import { projectTranslations, translatedProject } from '../../../data/project-localization';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return locales.filter((locale) => locale !== 'en').flatMap((lang) =>
+    projects.map((project) => ({ params: { lang, slug: project.id }, props: { project, lang } })),
+  );
+}
+
+const { project, lang } = Astro.props;
+const locale = lang as Exclude<Locale, 'en'>;
+const text = translatedProject(project, locale);
+const detail = projectTranslations[locale][project.id];
+---
+
+<Base locale={locale} title={copy[locale].labels.projects} description={text.summary}>
+  <article class="container project">
+    <a class="back link" href={`/${locale}/#projects`}>← {detail.back}</a>
+    <p class="mono meta">
+      {text.context && <span>{text.context}</span>}
+      {text.context && text.period && <span> · </span>}
+      {text.period && <span>{text.period}</span>}
+    </p>
+    <h1 class="title">{text.title}</h1>
+    <p class="summary muted">{text.summary}</p>
+    {project.data.tags.length > 0 && <ul class="tags">{project.data.tags.map((tag) => <li class="tag">{tag}</li>)}</ul>}
+    <div class="prose">
+      <h2>{detail.overview}</h2>
+      <p>{detail.overviewText}</p>
+      <h2>{detail.work}</h2>
+      <ul>{detail.bullets.map((bullet) => <li>{bullet}</li>)}</ul>
+      {detail.tools && <><h2>Tools</h2><p>{detail.tools}</p></>}
+    </div>
+  </article>
+</Base>
+
+<style>
+  .project { padding-block: var(--sp-7); }
+  .back { display: inline-block; font-size: .875rem; margin-bottom: var(--sp-6); }
+  .meta { margin-bottom: var(--sp-2); }
+  .title { font-size: clamp(2rem, 5vw, 3.5rem); letter-spacing: -.03em; max-width: 20ch; }
+  .summary { font-size: clamp(1.125rem, 1.6vw, 1.375rem); max-width: 44rem; margin-top: var(--sp-3); }
+  .tags { display: flex; flex-wrap: wrap; gap: var(--sp-1); margin-top: var(--sp-4); }
+  .prose { margin-top: var(--sp-6); padding-top: var(--sp-6); border-top: 1px solid var(--border); }
+</style>

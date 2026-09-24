@@ -316,6 +316,35 @@ summary,
   color: var(--text);
 }
 
+/* Locale-aware availability badge, injected from the shared page copy. */
+.hero__availability {
+  position: absolute;
+  right: -1rem;
+  bottom: 1rem;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  max-width: calc(100% - 1rem);
+  margin: 0;
+  padding: .625rem .75rem;
+  color: var(--accent);
+  background: var(--bg);
+  border: 1px solid var(--accent);
+  box-shadow: .375rem .375rem 0 var(--accent-2);
+  font-family: var(--font-mono);
+  font-size: .6875rem;
+  line-height: 1.25;
+}
+.hero__availability span {
+  width: .5rem;
+  height: .5rem;
+  flex: none;
+  border-radius: 50%;
+  background: #42be65;
+  box-shadow: 0 0 .35rem #42be65, 0 0 .9rem rgba(66, 190, 101, .9);
+}
+
 /* Scroll-in reveal: elements start hidden, .is-visible is added by Base.astro */
 .reveal {
   opacity: 0;

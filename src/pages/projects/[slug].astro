@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import { copy } from '../../data/profile';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
@@ -12,7 +13,7 @@ const { title, summary, period, context, tags, links } = project.data;
 const { Content } = await render(project);
 ---
 
-<Base title={title} description={summary}>
+<Base title={copy.en.labels.projects} description={summary}>
   <article class="container project">
     <a class="back link" href="/#projects">← Projects</a>
     <p class="mono meta">
