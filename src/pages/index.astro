@@ -40,6 +40,7 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
       </div>
       <div class="hero__frame">
         <img class="hero__photo" src={profile.photo} alt={`Portrait of ${profile.name}`} width="480" height="640" />
+        <p class="hero__availability"><span aria-hidden="true"></span>Open to open-source collaboration</p>
       </div>
     </div>
   </section>
@@ -185,7 +186,7 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
   .hero__glow--1 {
     top: -12rem;
     left: -8rem;
-    background: #42be65;
+    background: #a7f3b5;
   }
   .hero__glow--2 {
     right: -10rem;
@@ -308,7 +309,7 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
     position: absolute;
     inset: 0;
     transform: translate(1rem, 1rem);
-    background: #42be65;
+    background: #a7f3b5;
     border-radius: var(--radius);
     z-index: -1;
     transition: transform 300ms var(--ease);
@@ -323,6 +324,32 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
     object-fit: cover;
     object-position: center 72%;
     border-radius: var(--radius);
+  }
+  .hero__availability {
+    position: absolute;
+    right: -1rem;
+    bottom: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    max-width: calc(100% - 1rem);
+    margin: 0;
+    padding: 0.625rem 0.75rem;
+    color: #001d24;
+    background: #d9ffe2;
+    border: 1px solid #42be65;
+    box-shadow: 0.375rem 0.375rem 0 #42be65;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    line-height: 1.25;
+  }
+  .hero__availability span {
+    flex: none;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: #198038;
+    box-shadow: 0 0 0.5rem #42be65;
   }
 
   /* About */
