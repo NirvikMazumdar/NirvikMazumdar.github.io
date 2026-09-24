@@ -288,6 +288,23 @@ summary,
   font-weight: 800;
 }
 
+/* Quiet scan affordance for dense career content. */
+#experience .entry,
+#education .entry,
+#skills .skills__row {
+  transform-origin: left center;
+  transition: transform 180ms var(--ease), background 180ms var(--ease), box-shadow 180ms var(--ease);
+}
+#experience .entry:hover,
+#experience .entry:focus-within,
+#education .entry:hover,
+#education .entry:focus-within,
+#skills .skills__row:hover {
+  background: color-mix(in srgb, var(--accent-tint) 60%, transparent);
+  box-shadow: 0 0.375rem 1.25rem color-mix(in srgb, var(--accent) 10%, transparent);
+  transform: scale(1.012);
+}
+
 .entry__org {
   color: var(--text);
   font-weight: 800;
