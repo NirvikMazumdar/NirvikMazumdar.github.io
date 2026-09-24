@@ -208,15 +208,23 @@ const year = new Date().getFullYear();
   .footer__meta {
     display: flex;
     flex-wrap: wrap;
+    position: relative;
     justify-content: space-between;
     gap: var(--sp-2) var(--sp-4);
     padding-block: var(--sp-4);
   }
   .footer__legal {
-    width: 100%;
-    max-width: 62rem;
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    bottom: calc(100% + .75rem);
+    width: min(22rem, calc(100vw - 2rem));
     margin: 0;
+    padding: .75rem;
     color: rgba(208, 226, 255, 0.82);
+    background: rgba(0, 29, 61, 0.98);
+    border: 1px solid rgba(161, 214, 255, 0.66);
+    box-shadow: .3125rem .3125rem 0 rgba(69, 137, 255, 0.72);
     font-size: .6875rem;
     line-height: 1.55;
     display: none;
