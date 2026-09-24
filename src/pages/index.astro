@@ -186,7 +186,7 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
   .hero__glow--1 {
     top: -12rem;
     left: -8rem;
-    background: #a7f3b5;
+    background: var(--accent);
   }
   .hero__glow--2 {
     right: -10rem;
@@ -309,7 +309,7 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
     position: absolute;
     inset: 0;
     transform: translate(1rem, 1rem);
-    background: #a7f3b5;
+    background: linear-gradient(135deg, #d9ffe2 0%, #a7f3b5 48%, #42be65 100%);
     border-radius: var(--radius);
     z-index: -1;
     transition: transform 300ms var(--ease);
