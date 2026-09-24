@@ -25,7 +25,7 @@ const year = new Date().getFullYear();
     <div>
       <p class="mono">{text.labels.contact}</p>
       <h2 class="footer__headline">{text.footerHeadline}</h2>
-      <a class="footer__mail link" href={`mailto:${profile.email}`}>{profile.email}</a>
+      <a class="footer__mail footer__action link" href={`mailto:${profile.email}`}>{profile.email} <span aria-hidden="true">↗</span></a>
     </div>
     <ul class="footer__links">
       {profile.links.map((l) => (
@@ -158,8 +158,7 @@ const year = new Date().getFullYear();
     margin-block: var(--sp-2) var(--sp-4);
   }
   .footer__mail {
-    font-size: 1.125rem;
-    color: #fff;
+    margin-top: var(--sp-3);
   }
   .footer .mono { color: #c6e4ff; }
   .footer .link { color: #d0e2ff; }
@@ -170,6 +169,7 @@ const year = new Date().getFullYear();
     gap: var(--sp-2);
     padding-top: var(--sp-6);
   }
+  .footer__action,
   .footer__links .link {
     display: flex;
     align-items: center;
@@ -185,6 +185,8 @@ const year = new Date().getFullYear();
     text-decoration: none;
     transition: transform var(--dur) var(--ease), background var(--dur) var(--ease), box-shadow var(--dur) var(--ease), color var(--dur) var(--ease);
   }
+  .footer__action:hover,
+  .footer__action:focus-visible,
   .footer__links .link:hover,
   .footer__links .link:focus-visible {
     color: #fff;
