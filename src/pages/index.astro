@@ -40,7 +40,7 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
       </div>
       <div class="hero__frame">
         <img class="hero__photo" src={profile.photo} alt={`Portrait of ${profile.name}`} width="480" height="640" />
-        <p class="hero__availability"><span aria-hidden="true"></span>Open to open-source collaboration</p>
+        <p class="hero__availability"><span aria-hidden="true"></span>Open to collaboration</p>
       </div>
     </div>
   </section>
@@ -348,8 +348,8 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
     width: 0.5rem;
     height: 0.5rem;
     border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 0 0.5rem var(--accent-2);
+    background: #b7ffca;
+    box-shadow: 0 0 0.35rem #b7ffca, 0 0 0.9rem #42be65;
   }
 
   /* About */
